@@ -40,11 +40,12 @@ The second and main system (`neuromorphic_dvs.py`) simulates a Dynamic Vision Se
 
 ### 2.1 References
 
-| Source Type | Title / Link | What Inspired You |
-|---|---|---|
-| Research concept | Neuromorphic computing / Dynamic Vision Sensors (DVS cameras) | The idea that biological vision is event-driven, not frame-driven |
-| OpenCV documentation | https://docs.opencv.org | Sobel, Canny, Laplacian implementations and frame differencing |
-| Academic concept | Sparse computation in neural systems | Only processing what changes = massive compute savings |
+| Name | Primary Role | Secondary Role | Strengths Brought to the Project |
+|---|---|---|---|
+| Sahil Singh *(Team Lead)* | Hardware Setup & Integration | Project Coordination | Raspberry Pi setup, peripheral configuration, team management |
+| Kartik Nagare | Coding / Computer Vision | Testing | Algorithm design, Python, OpenCV, frame processing pipeline |
+| Shreyash Garud | UI / Display & Visualization | Documentation | Panel layout, display assembly, metrics rendering, README |
+| Kunal Sahasrabudhe | Testing & Debugging | Coding Support | Live testing on Pi, debugging, adaptive threshold validation |
 
 ### 2.2 Original Twist
 Most edge detection projects run all algorithms on every pixel of every frame — brute force. This project flips that: it first identifies *which* pixels have changed (active pixels), and only runs edge detection on those. This is true neuromorphic-style sparse processing. The visual output — green ON events, red OFF events, white confirmed edges on a black background — directly shows the brain-inspired computation happening in real time.
@@ -451,7 +452,10 @@ Not applicable — this is a software-only project. No physical fabrication was 
 
 ## 16. Build Screenshots
 
-*[Upload and link here:]*
+![edge_basic.py - 2x2 panel output](edge1.jpeg)
+![neuromorphic_dvs.py - 6 panel grid](edge2.jpeg)
+![Additional output](image1.jpeg)
+
 - edge_basic.py running — 2×2 panel (Original, Sobel, Canny, Laplacian)
 - neuromorphic_dvs.py running — 2×3 grid (all 6 panels)
 - Stats panel close-up — activity graph, event rate, adaptive indicator
