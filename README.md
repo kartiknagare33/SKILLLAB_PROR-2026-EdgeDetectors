@@ -16,13 +16,10 @@ Repository forked and renamed as: **SKILLLAB_PROR-2026-EdgeDetectors**
 
 ### 1.2 Team Members
 
-
-
 | Name | Primary Role | Secondary Role | Strengths Brought to the Project |
-
 |---|---|---|---|
 | Sahil Singh *(Team Lead)* | Hardware Setup & Integration | Project Coordination | Raspberry Pi setup, peripheral configuration, team management |
-| Kartik Nagare | Coding  | Testing | Algorithm design, Python, OpenCV, frame processing pipeline |
+| Kartik Nagare | Coding | Testing | Algorithm design, Python, OpenCV, frame processing pipeline |
 | Shreyash Garud | Computer Vision | Documentation | Panel layout, display assembly, metrics rendering |
 | Kunal Sahasrabudhe | Vivado Testing & Debugging | Coding Support | Live testing on FPGA, debugging, adaptive threshold validation |
 
