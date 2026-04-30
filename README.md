@@ -1,42 +1,38 @@
 # SKILL LAB PRACTICAL HACKATHON
 **Final Project README**
-> Project Weight: 100% | Team Size: 2 students | Project Duration: 16 hours | Total Time Available: 32 effort-hours per team | Project Type: Playful, interactive, technology-based experience
+> Project Weight: 100% | Team Size: 2 students | Project Duration: 16 hours | Project Type: Playful, interactive, technology-based experience
 
 ---
 
 ## Before you begin
-> Repository forked and renamed as: **SKILLLAB_PROR-2026-EdgeDetectors**
-
----
-
-## How to use this README
-This file is the team's working project document, updated throughout the build period to show idea, planning, design decisions, technical process, build progress, testing, failures, changes, and final outcome.
+Repository forked and renamed as: **SKILLLAB_PROR-2026-EdgeDetectors**
 
 ---
 
 ## 1. Team Identity
 
 ### 1.1 Studio / Group Name
-**Project²**
+**EdgeDetectors**
 
 ### 1.2 Team Members
 
 | Name | Primary Role | Secondary Role | Strengths Brought to the Project |
 |---|---|---|---|
-| Mrugendra Vasmatkar | Electronics / Coding / App | Documentation | Documentation, Gift of Gab |
-| Jyoti Bagate | Electronics / Fabrication | Coding | Material Handling, Hardware |
+| [Your Name] | Coding / Computer Vision | Documentation | Algorithm design, Python, OpenCV |
+| [Teammate Name] | Testing / Hardware Setup | Coding | Raspberry Pi setup, debugging |
 
 ### 1.3 Project Title
-**"Project Project"**
-*(because Project-or)*
+**Neuromorphic DVS Simulation + Edge Detection on Raspberry Pi**
 
 ### 1.4 One-Line Pitch
-A projected, fully customizable time portal where engineering education is done through a PUBG-style battlefield — from the comfort of our home.
+A real-time neuromorphic vision system running on Raspberry Pi that simulates how the brain sees — only processing pixels that actually change, saving compute and mimicking biological vision.
 
 ### 1.5 Expanded Project Idea
-"Project Project" is an interactive physical-digital experience that combines a real RC car with a projector-based game environment. The car moves on a flat surface while a camera overhead tracks its position using ArUco markers. A projector throws a live game world — obstacles, targets, zones — onto that same surface. The car physically drives through the projected game, and the system detects collisions, scores points, and updates the world in real time.
+This project builds two connected computer vision systems on a Raspberry Pi.
 
-The technologies involved span computer vision (OpenCV, ArUco marker tracking), embedded systems (Raspberry Pi, motor driver, DC motors), projection mapping, and Python-based game logic (PyGame). The result is an experience that feels like playing a video game except your controller is a real car driving through a real-world projection — making engineering concepts tangible, physical, and genuinely fun.
+The first is a classical edge detection pipeline (`edge_basic.py`) that takes a static image and runs three different edge detectors — Sobel Magnitude, Canny, and Laplacian — simultaneously, displaying all four panels (original + three detectors) in a tiled window. This is the baseline: how conventional computer vision finds edges.
+
+The second and main system (`neuromorphic_dvs.py`) simulates a Dynamic Vision Sensor (DVS) — a type of neuromorphic camera inspired by biological vision. Instead of processing every pixel in every frame (like a normal camera), it only fires on pixels that change brightness beyond a threshold. This is exactly how the human retina works: it sends signals only when something changes, ignoring the static background entirely. The result is a sparse, event-driven system that is far more compute-efficient than conventional frame-by-frame processing — and visually striking. The system runs live on a Raspberry Pi using a test video file, displaying ON events (pixels getting brighter), OFF events (pixels getting darker), confirmed sparse edges, activity metrics, polarity panels, event rate, adaptive threshold, and a rolling activity graph — all in real time.
 
 ---
 
@@ -46,131 +42,172 @@ The technologies involved span computer vision (OpenCV, ArUco marker tracking), 
 
 | Source Type | Title / Link | What Inspired You |
 |---|---|---|
-| Video | https://www.instagram.com/reel/DW4CT7WCDry/?igsh=cXg3dzAxYmdncDBo | How projection mapping can be used to create interactive digital + physical experiences |
-| Game | PUBG / top-down shooter games | The battlefield visual language — zones, obstacles, movement under pressure |
+| Research concept | Neuromorphic computing / Dynamic Vision Sensors (DVS cameras) | The idea that biological vision is event-driven, not frame-driven |
+| OpenCV documentation | https://docs.opencv.org | Sobel, Canny, Laplacian implementations and frame differencing |
+| Academic concept | Sparse computation in neural systems | Only processing what changes = massive compute savings |
 
 ### 2.2 Original Twist
-Most projection mapping projects are passive — you watch them. Ours is active: you control a real physical object that interacts with the projection in real time. The camera-tracked car means the digital world *responds* to where you physically are, not where a joystick says you are. The PUBG battlefield framing also makes it immediately legible to students — they already know the genre, so the learning experience starts with zero friction.
+Most edge detection projects run all algorithms on every pixel of every frame — brute force. This project flips that: it first identifies *which* pixels have changed (active pixels), and only runs edge detection on those. This is true neuromorphic-style sparse processing. The visual output — green ON events, red OFF events, white confirmed edges on a black background — directly shows the brain-inspired computation happening in real time.
 
 ---
 
 ## 3. Project Intent
 
 ### 3.1 User Journey
-Riya walks up to the table. She sees a flat white surface with a glowing top-down map projected onto it — a PUBG-style battlefield with walls, zones, and a blinking target marker. A small car sits at the start position.
+Arjun opens the terminal on the Raspberry Pi and runs `python3 ~/neuromorphic_dvs.py`. A window appears with six panels: the original video on the left, and five panels showing the system's interpretation of motion — active pixels, ON events glowing green, OFF events in red, confirmed edges in white, and a live graph tracking how busy the scene is over time.
 
-She picks up her phone, opens the controller web page, and taps Forward. The car hums and rolls into the battlefield. The projected walls stay fixed — she has to steer around them. She taps Left, then Forward again. The car clips a wall. The projector flashes red around the obstacle and a buzzer sound plays — collision detected.
+He watches the video play. Most of the screen is black — the system is ignoring the static background completely. Only the moving parts of the scene fire events. He presses `+` to raise the threshold — fewer pixels fire, only the strongest motion survives. He presses `A` — adaptive mode kicks in, and the system starts auto-tuning the threshold to keep activity in the ideal range. He presses `S` to save a screenshot. He presses `Q` to quit.
 
-She tries again, more carefully this time. She threads the car through a corridor, reaches the glowing target zone, and the projector explodes in a green burst — level complete. A new map loads instantly. The experience lasts 90 seconds and Riya has just physically navigated coordinate systems, learned about sensors, and experienced real-time feedback loops — without reading a single slide.
+He then runs `python3 ~/edge_basic.py` — a static image opens in a 2×2 grid showing the original alongside Sobel, Canny, and Laplacian edge maps side by side. He can see exactly how each algorithm interprets the same image differently.
 
 ---
 
 ## 4. Definition of Success
 
 ### 4.1 Definition of "Usable"
-The project is usable when: a person who has never seen it before can pick up the phone controller, drive the car around the projected surface, and clearly understand when they have hit an obstacle or reached a target — without any explanation from the team.
+The project is usable when both scripts run without errors on the Raspberry Pi, produce correct visual output, respond to keyboard controls, and clearly demonstrate the difference between conventional edge detection and neuromorphic event-driven processing.
 
 ### 4.2 Minimum Usable Version
-- Car moves in all four directions via phone/web controller
-- Camera tracks car position reliably using ArUco markers
-- Projector displays at least one static map with obstacles and a target zone
-- System detects when car reaches target zone and gives clear visual feedback
+- `edge_basic.py` loads an image and shows Sobel, Canny, Laplacian in a tiled window
+- `neuromorphic_dvs.py` reads from video, shows ON/OFF events and active mask in real time
+- Threshold adjustable with keyboard
+- FPS and activity % displayed on screen
 
 ### 4.3 Stretch Features
-- Multiple map levels that auto-load on completion
-- Score counter and timer projected live onto the surface
-- Collision sound effects
-- Moving obstacles (projected)
-- Two-car multiplayer mode
-- Difficulty settings (faster car, tighter corridors)
+- Polarity separation panels (ON and OFF shown independently) ✅ Done
+- Event rate counter (events per second) ✅ Done
+- Adaptive threshold (auto-adjusts based on scene activity) ✅ Done
+- Real-time rolling activity graph ✅ Done
+- Motion bounding boxes around event clusters 🔄 In progress
+- Per-region activity heatmap overlay
+- Canny threshold live keyboard controls
+- Record DVS output to video file
 
 ---
 
 ## 5. System Overview
 
 ### 5.1 Project Type
-- ✅ Electronics-based
-- ✅ Mechanical
-- ✅ Sensor-based
-- ✅ App-connected
-- ✅ Motorized
-- ✅ Light-based
-- ✅ Screen/UI-based
-- ✅ Fabricated structure
-- ✅ Game logic based
+- ✅ Electronics-based (Raspberry Pi)
+- ✅ Sensor-based (camera / video input)
+- ✅ Screen/UI-based (OpenCV display window)
+- ✅ Game logic based (real-time keyboard controls, adaptive logic)
 
 ### 5.2 High-Level System Description
-**Input:** Phone sends movement commands (Forward / Back / Left / Right) via HTTP to the Raspberry Pi over WiFi. A webcam mounted above the surface continuously captures the play area.
+**Input:** A video file (`test.mp4`) is read frame by frame. A static image (`test.jpg`) is used for the edge detection script.
 
-**Processing:** OpenCV on the laptop/Pi detects the ArUco marker on top of the car and computes its exact position and orientation on the surface. PyGame game logic checks this position against obstacle and target zone coordinates on the current map.
+**Processing:** Each frame is converted to grayscale and blurred. Frame differencing computes which pixels changed beyond a threshold — these are the "events". Positive differences are ON events (brighter), negative are OFF events (darker). Canny edge detection runs only on active pixels (sparse processing). Metrics — activity %, event rate, saved compute % — are calculated each frame. An adaptive controller optionally auto-adjusts the threshold.
 
-**Output:** The projector displays the live game map on the surface, updating feedback (red flash on collision, green burst on goal) in real time. The Raspberry Pi sends PWM signals to the L298N motor driver to spin the DC motors.
+**Output:** A multi-panel OpenCV window displays the original frame, active mask, event map, ON polarity panel, OFF polarity panel, and a stats panel with a live rolling graph. All rendered at real-time frame rates on the Pi.
 
-**Physical structure:** A laser-cut chassis carries the Raspberry Pi, motor driver, and battery pack. Two BO motors drive the wheels. An ArUco marker is mounted on top of the car for camera tracking. The play surface is white for good projection contrast.
-
-**App interaction:** A lightweight web server runs on the Pi. The player's phone opens the IP address in a browser and gets a simple directional control UI.
+**Physical structure:** Raspberry Pi connected to a monitor. No external hardware required — runs entirely in software using a test video file.
 
 ### 5.3 Input / Output Map
 
 | System Part | Type | What It Does |
 |---|---|---|
-| Phone web controller | Input | Sends direction commands via HTTP |
-| Webcam (overhead) | Input | Captures car position via ArUco marker |
-| Raspberry Pi | Processing | Runs web server, motor control, game logic |
-| OpenCV / PyGame | Processing | Tracks position, checks collisions, updates game state |
-| L298N Motor Driver | Output | Drives DC motors based on Pi GPIO signals |
-| BO DC Motors | Output | Move the car in four directions |
-| Projector | Output | Displays game map, obstacles, feedback visuals on surface |
+| test.mp4 (video file) | Input | Source frames for DVS simulation |
+| test.jpg (image file) | Input | Source image for static edge detection |
+| Frame differencing | Processing | Detects which pixels changed (events) |
+| Canny (sparse) | Processing | Finds confirmed edges only on active pixels |
+| Adaptive controller | Processing | Auto-adjusts threshold to maintain target activity range |
+| OpenCV display window | Output | Shows all panels — events, masks, stats, graph |
+| Keyboard (Q / + / - / A / S) | Control | Quit, adjust threshold, toggle adaptive, save screenshot |
 
 ---
 
-## 6. System Design, Sketches and Visual Planning
+## 6. System Design and Visual Planning
 
-### 6.1 Concept Architecture / Sketch
-*[Upload early concept sketch here]*
+### 6.1 Concept Architecture
 
-### 6.2 Labeled Build Sketch / Flow Diagram
-*[Upload labeled diagram here — show: car chassis, Pi placement, camera mount, projector angle, surface, phone controller]*
+```
+VIDEO FILE (test.mp4)
+        │
+        ▼
+   Frame Reader (loops on end)
+        │
+        ▼
+   Grayscale + Gaussian Blur
+        │
+        ▼
+   Frame Differencing (current - previous)
+   ┌────┴────┐
+   ▼         ▼
+ON mask    OFF mask
+(diff > T) (diff < -T)
+   └────┬────┘
+        │ Active Mask (union)
+        ▼
+   Canny Edge Detection (full frame)
+        │
+        ▼
+   Bitwise AND → Sparse Events (edges only on active pixels)
+        │
+        ▼
+   Metrics: Activity%, Saved%, Event Rate (e/s), Smoothed Activity
+        │
+        ▼
+   Adaptive Threshold Controller (optional, toggle A)
+        │
+        ▼
+   Build 6 display panels → assemble 2×3 grid → imshow
+```
 
-### 6.3 Approximate Dimensions
+### 6.2 Display Layout
 
-| Dimension | Value |
+```
+┌─────────────┬─────────────┬─────────────┐
+│  Original   │  Event Map  │ Active Mask │
+│  (video)    │ G=ON R=OFF  │ white=      │
+│             │ W=edge      │ changed px  │
+├─────────────┼─────────────┼─────────────┤
+│  ON Events  │ OFF Events  │    Stats    │
+│  (green)    │  (blue/red) │  + Graph    │
+└─────────────┴─────────────┴─────────────┘
+Each panel: 320×240 px  |  Total window: 960×480 px
+```
+
+### 6.3 Key Parameters
+
+| Parameter | Value |
 |---|---|
-| Length | 16 cm |
-| Width | 16 cm |
-| Height | 8 cm |
-| Estimated weight | 400 g |
+| Panel size | 320 × 240 px each |
+| Total display | 960 × 480 px (2 rows × 3 cols) |
+| Default threshold | 20 |
+| Adaptive high limit | 15% activity → raise threshold |
+| Adaptive low limit | 4% activity → lower threshold |
+| Adaptive cooldown | 10 frames between adjustments |
+| Activity history buffer | 60 frames rolling |
+| Event rate smoothing | 10 frames |
 
 ---
 
 ## 7. Electronics Planning
 
-### 7.1 Electronics Used
+### 7.1 Components Used
 
 | Component | Quantity | Purpose |
 |---|---|---|
-| Raspberry Pi | 1 | Main controller — runs web server, game logic, motor control |
-| L298N Motor Driver | 1 | Controls direction and speed of both DC motors |
-| BO DC Motors | 2 | Drive the wheels for movement |
-| Buck Converter | 1 | Steps down battery voltage to stable 5V for Pi |
-| Li-Ion Battery Pack | 1 | Portable power source for entire system |
-| Projector | 1 | Displays the game map and feedback onto the surface |
-| Webcam | 1 | Tracks car position overhead using ArUco markers |
+| Raspberry Pi | 1 | Main compute — runs all Python scripts |
+| Monitor | 1 | Display output for OpenCV windows |
+| Keyboard | 1 | Live controls (Q, +, -, A, S) |
+| MicroSD card | 1 | OS and code storage |
+| Power supply | 1 | Power the Pi |
 
 ### 7.2 Wiring Plan
-The Raspberry Pi connects to the L298N motor driver using four GPIO pins (18, 19, 22, 23) for direction control (IN1, IN2, IN3, IN4), and two PWM-capable pins (25, 26) for speed control (ENA, ENB). The motor driver output terminals connect to the two BO motors. The motor driver is powered directly from the Li-Ion battery pack (7.4V nominal). The buck converter steps the battery voltage down to 5V to safely power the Raspberry Pi. All components share a common ground. The projector and webcam connect to the laptop (or Pi via USB), which handles tracking and game rendering separately.
+No external wiring required. The Raspberry Pi runs entirely in software. The monitor connects via HDMI. The keyboard connects via USB. The video file (`test.mp4`) and image (`test.jpg`) are stored locally on the Pi at `/home/exam/`.
 
 ### 7.3 Circuit Diagram
-*[Upload circuit diagram here]*
+Not applicable — software-only project. No external electronics or wiring beyond standard Raspberry Pi peripherals.
 
 ### 7.4 Power Plan
 
 | Question | Response |
 |---|---|
-| Power source | Li-Ion battery pack (2S, ~7.4V) |
-| Voltage required | 7.4V for motors via L298N; 5V for Raspberry Pi via buck converter |
-| Current concerns | Motors draw high current under load — may cause voltage sag affecting Pi stability. Decoupling capacitors added across motor terminals. |
-| Safety concerns | Avoid over-discharging Li-Ion cells. Secure all wiring to prevent shorts. Buck converter output verified before connecting Pi. |
+| Power source | Standard Raspberry Pi USB-C power supply |
+| Voltage required | 5V @ 3A |
+| Current concerns | None — no motors or high-draw peripherals |
+| Safety concerns | None beyond standard Pi power supply usage |
 
 ---
 
@@ -180,57 +217,71 @@ The Raspberry Pi connects to the L298N motor driver using four GPIO pins (18, 19
 
 | Tool / Platform | Purpose |
 |---|---|
-| Python 3 | Main programming language on Raspberry Pi |
-| OpenCV | Camera capture, ArUco marker detection, position tracking |
-| PyGame | Game logic, map rendering, collision detection, projection output |
-| Flask (Python) | Lightweight web server for phone controller UI |
-| RPi.GPIO | GPIO pin control for motor driver signals |
+| Python 3 | Main programming language |
+| OpenCV (python3-opencv) | Image processing, display, video capture |
+| NumPy | Array math — frame differencing, masking, metrics |
+| collections.deque | Rolling buffers for activity history and event rate |
+| time | FPS calculation and event rate timing |
 
 ### 8.2 Software Logic / Algorithm
 
-**Startup:** Pi initializes GPIO pins for motor control, starts the Flask web server, opens the webcam feed, and loads the first game map into PyGame. Projector output window is set to fullscreen on the projector display.
+**Startup:** Video capture opens `test.mp4`. DVSProcessor initialises with threshold=20 and empty history buffers. FPS counter starts.
 
-**Input handling:** Flask receives HTTP GET requests from the phone (/forward, /back, /left, /right, /stop) and translates them into motor PWM commands via GPIO.
+**Input handling:** `cv2.waitKey(1)` checks keyboard every frame. Q/ESC → quit. `+`/`=` → raise threshold by 5. `-` → lower threshold by 5. `A` → toggle adaptive mode. `S` → save screenshot to `/home/exam/dvs_<timestamp>.png`.
 
-**Sensor reading:** OpenCV captures frames from the overhead webcam continuously. Each frame is processed to detect the ArUco marker on the car — giving X, Y position and rotation angle in the surface coordinate system.
+**Frame processing:** Each frame is converted to grayscale and Gaussian blurred (3×3). Frame difference is computed against previous frame. Pixels exceeding threshold in positive direction → ON mask. Negative direction → OFF mask. Union → active mask. Canny runs on full frame; bitwise ANDed with active mask → sparse events (confirmed edges on active pixels only).
 
-**Decision logic:** PyGame maps the detected car position onto the game map grid. Each frame it checks whether the car's bounding box overlaps with any obstacle zone or the target zone. If an obstacle is hit → trigger collision feedback. If target is reached → load next map.
+**Metrics:** `activity_pct` = active pixels / total pixels × 100. `saved_pct` = 100 - activity_pct. `event_rate` = sparse event pixel count / elapsed time (events/sec). All values smoothed with rolling deques.
 
-**Output behavior:** PyGame renders the game map (walls, target, score, timer) to the projector window in real time. Collision feedback = red flash overlay for 0.5s. Goal feedback = green burst + level complete screen.
+**Adaptive threshold:** If adaptive mode ON and cooldown elapsed: if smoothed activity > 15% → raise threshold by 1. If smoothed activity < 4% → lower threshold by 1. Cooldown = 10 frames between adjustments.
 
-**Communication logic:** Phone → HTTP request → Flask on Pi → GPIO → Motor driver → Motors. Webcam → OpenCV → position data → PyGame game logic → projector output.
+**Output:** Six panels built and assembled into a 2×3 grid. Displayed via `cv2.imshow`. Video loops automatically when it ends.
 
-**Reset behavior:** Motors stop if no command received within 500ms timeout. Game resets to start position when a level is completed or player presses reset on the web UI.
+**Reset:** No explicit reset needed — video loops. Threshold and adaptive state persist until manually changed or script restarts.
 
 ### 8.3 Code Flowchart
+
 ```
 START
   │
-  ├── Initialize GPIO (motor pins)
-  ├── Start Flask web server
-  ├── Open webcam
-  └── Load Game Map 1
+  ├── Open test.mp4
+  ├── Init DVSProcessor (threshold=20)
+  └── Init FPS counter
         │
         ▼
-  MAIN LOOP
-  │
-  ├── [Thread 1] Flask listens for HTTP commands
-  │       └── /forward /back /left /right /stop
-  │               └── Set motor PWM via GPIO
-  │
-  ├── [Thread 2] OpenCV reads webcam frame
-  │       └── Detect ArUco marker
-  │               └── Extract (X, Y, angle)
-  │
-  └── [Thread 3] PyGame game logic
-          ├── Map car position to game grid
-          ├── Check collision with obstacles
-          │       └── YES → Red flash, play sound
-          ├── Check if target zone reached
-          │       └── YES → Green burst, load next map
-          └── Render updated map to projector
-                │
-                └── REPEAT LOOP
+  MAIN LOOP ──────────────────────────────────────┐
+  │                                               │
+  ├── read_frame() → if end of video: loop back   │
+  │                                               │
+  ├── Calculate FPS (exponential smoothing)       │
+  │                                               │
+  ├── DVSProcessor.process(frame):                │
+  │     ├── Grayscale + GaussianBlur              │
+  │     ├── Frame diff → pos_mask, neg_mask       │
+  │     ├── active_mask = pos OR neg              │
+  │     ├── Canny on full frame                   │
+  │     ├── sparse_events = Canny AND active_mask │
+  │     ├── Compute activity%, saved%, event_rate │
+  │     ├── Update rolling history buffers        │
+  │     └── Adaptive threshold adjustment         │
+  │                                               │
+  ├── Build 6 display panels                      │
+  ├── Assemble 2×3 grid                           │
+  ├── cv2.imshow()                                │
+  │                                               │
+  ├── cv2.waitKey(1) — check keyboard:            │
+  │     ├── Q / ESC  → BREAK                      │
+  │     ├── + / =    → threshold up               │
+  │     ├── -        → threshold down             │
+  │     ├── A        → toggle adaptive            │
+  │     └── S        → save screenshot            │
+  │                                               │
+  └────────────────────────────────────────────────┘
+        │
+        ▼
+  cap.release()
+  cv2.destroyAllWindows()
+  END
 ```
 
 ---
@@ -239,72 +290,63 @@ START
 
 ### 9.1 Full BOM
 
-| Item | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec | Why This Choice? |
+| Item | Quantity | In Kit? | Need to Buy? | Estimated Cost | Spec | Why This Choice? |
 |---|---|---|---|---|---|---|
-| Raspberry Pi | 1 | Yes | No | ₹0 | Raspberry Pi 4 / 3B+ | Main controller with WiFi built in |
-| L298N Motor Driver | 1 | Yes | No | ₹0 | L298N dual H-bridge | Bidirectional control + PWM speed |
-| BO DC Motors + Wheels | 2 | No | Yes | ₹150 | BO motor + 6cm wheels | High torque, lightweight |
-| Buck Converter | 1 | No | Yes | ₹75 | 5V output, 3A | Stable regulated power for Pi |
-| Li-Ion Battery Pack | 1 | No | Yes | ₹200 | 2S 18650 pack | Portable, rechargeable |
-| ArUco Marker (printed) | 1 | No | No | ₹0 | Printed on paper | Camera tracking target |
-| White play surface | 1 | No | No | ₹0 | A3 white sheet / board | Good projection contrast |
+| Raspberry Pi | 1 | Yes | No | ₹0 | Pi 3B+ or 4 | Main compute platform |
+| MicroSD Card | 1 | Yes | No | ₹0 | 16GB+ | OS and code storage |
+| Monitor + HDMI | 1 | Yes | No | ₹0 | Any | Display output |
+| Keyboard | 1 | Yes | No | ₹0 | USB | Live keyboard controls |
+| test.mp4 | 1 | No | No | ₹0 | MP4 v2, from w3schools | Test input — no camera needed |
+| test.jpg | 1 | No | No | ₹0 | JPEG | Static image for edge_basic.py |
 
 ### 9.2 Material Justification
-BO motors were chosen over servos or stepper motors because the system needs continuous rotation for free movement — not precise angular steps. Since the camera handles position tracking externally, the motor only needs to spin, not count steps. The L298N allows bidirectional PWM control from the Pi's GPIO pins without additional circuitry. The buck converter ensures the Pi receives clean 5V even as motor load fluctuates the battery voltage.
+The entire project runs in software — no custom hardware required beyond a standard Raspberry Pi setup. OpenCV was installed via `apt` (`python3-opencv`) to ensure ARM compatibility without needing to compile from source. A test video file was used in place of a physical camera so the system could be developed and tested without camera hardware.
 
 ### 9.3 Items Purchased
-
-| Item | Why Needed | Purchase Link | Latest Safe Date to Procure | Status |
-|---|---|---|---|---|
-| BO Motors + Wheels | Drive system for car | robu.in | 15th April | Received |
-| Buck Converter | Stable power for Pi | Local store | Before testing | Received |
-| Li-Ion Batteries | Portable power | Local store | Before testing | Received |
+Not applicable — all components were available in kit or downloaded freely. No purchases required.
 
 ### 9.4 Budget Summary
 
 | Budget Item | Estimated Cost |
 |---|---|
-| Electronics | ₹400 |
-| Mechanical parts | ₹200 |
-| Fabrication materials | ₹0 (available on campus) |
-| Purchased extras | ₹0 |
-| Contingency | ₹300 |
-| **Total** | **₹900** |
+| Electronics | ₹0 (all in kit) |
+| Software | ₹0 (all open source) |
+| Test files | ₹0 (downloaded free) |
+| **Total** | **₹0** |
 
 ### 9.5 Budget Reflection
-The total is comfortably within range. If cost needed cutting, the buck converter could be replaced with a 5V USB power bank (already regulated), saving ₹75. The Li-Ion pack could be substituted with a power bank if motor load is kept low. The projector is borrowed from campus — purchasing one would be the largest cost addition, so that remains borrowed.
+No budget was spent. The project was deliberately designed to be software-only so it could run on the existing Raspberry Pi kit without any additional procurement.
 
 ---
 
 ## 10. Planning the Work
 
 ### 10.1 Team Working Agreement
-Tasks are divided by strength — Mrugendra owns software (Flask server, OpenCV tracking, PyGame logic) and documentation. Jyoti owns hardware (chassis fabrication, motor wiring, electronics assembly). Decisions are made together by quick verbal agreement — if stuck for more than 15 minutes, we pivot or simplify rather than block. Progress is checked at the end of every 2-hour block against the milestone list. If a task is delayed, the other member helps unblock it immediately — nothing waits overnight. Documentation is updated in real time by Mrugendra as features are built and tested.
+Work was divided by feature — one member focused on the core DVS algorithm and frame processing pipeline, the other on display assembly, metrics, and testing. Decisions were made by trying both approaches and keeping what worked. Progress was checked after each feature by running the script live and verifying visual output on the Pi. Documentation was updated after each working milestone.
 
 ### 10.2 Task Breakdown
 
-| Task ID | Task | Owner | Estimated Hours | Deadline | Dependency | Status |
-|---|---|---|---|---|---|---|
-| T1 | Finalize concept and system design | Both | 2 | Hour 2 | None | Done |
-| T2 | Chassis fabrication (laser cut + assemble) | Jyoti | 3 | Hour 5 | T1 | Done |
-| T3 | Motor wiring + GPIO test | Jyoti | 2 | Hour 6 | T2 | Done |
-| T4 | Flask web server + phone controller UI | Mrugendra | 2 | Hour 6 | T1 | Done |
-| T5 | OpenCV ArUco marker detection | Mrugendra | 3 | Hour 9 | T1 | Done |
-| T6 | PyGame map rendering + projector output | Mrugendra | 3 | Hour 12 | T5 | Done |
-| T7 | Collision + goal detection logic | Mrugendra | 2 | Hour 14 | T6 | Done |
-| T8 | Full system integration test | Both | 2 | Hour 15 | All | Done |
-| T9 | Final documentation + README | Mrugendra | 1 | Hour 16 | All | Done |
+| Task ID | Task | Owner | Est. Hours | Status |
+|---|---|---|---|---|
+| T1 | edge_basic.py — Sobel, Canny, Laplacian, 2×2 display | Both | 2 | ✅ Done |
+| T2 | neuromorphic_dvs.py v1 — basic DVS, 3-panel display | Both | 3 | ✅ Done |
+| T3 | Add polarity separation (ON panel + OFF panel) | Both | 1 | ✅ Done |
+| T4 | Add event rate counter (events/sec) | Both | 1 | ✅ Done |
+| T5 | Add adaptive threshold with cooldown | Both | 2 | ✅ Done |
+| T6 | Add rolling activity graph in stats panel | Both | 1 | ✅ Done |
+| T7 | Assemble 2×3 grid layout (v2) | Both | 1 | ✅ Done |
+| T8 | Motion bounding boxes around event clusters (v3) | Both | 2 | 🔄 In progress |
+| T9 | Testing, documentation, GitHub push | Both | 2 | ✅ Done |
 
 ### 10.3 Responsibility Split
 
 | Area | Main Owner | Support Owner |
 |---|---|---|
-| Concept | Mrugendra | Jyoti |
-| Electronics | Jyoti | Mrugendra |
-| Coding | Mrugendra | Jyoti |
-| Mechanical build | Jyoti | Mrugendra |
-| Testing | Both | Both |
-| Documentation | Mrugendra | Jyoti |
+| DVS algorithm | Both | Both |
+| Display / panels | Both | Both |
+| Metrics + graph | Both | Both |
+| Testing on Pi | Both | Both |
+| Documentation | Both | Both |
 
 ---
 
@@ -313,34 +355,28 @@ Tasks are divided by strength — Mrugendra owns software (Flask server, OpenCV 
 ### 11.1 8-Hour Plan
 
 **Bi-Hour 1 — Plan and De-risk**
-- ✅ Idea finalized
-- ✅ Core interaction decided
-- ✅ Sketches made
-- ✅ BOM completed
-- ✅ Purchase needs identified
-- ✅ Key uncertainty identified (camera tracking accuracy)
-- ✅ Basic feasibility tested (Pi WiFi + motor spin confirmed)
+- ✅ Chose neuromorphic DVS as concept
+- ✅ Confirmed OpenCV available on Pi via apt
+- ✅ Confirmed test video and image available on Pi
+- ✅ edge_basic.py working — Sobel, Canny, Laplacian displaying correctly
 
-**Bi-Hour 2 — Build Subsystems**
-- ✅ Electronics tests completed (motor direction, PWM speed)
-- ✅ CAD / structure planning completed
-- ✅ Flask web server running, phone can connect
-- ✅ OpenCV ArUco detection working on test frame
-- ✅ Main subsystems partially working independently
+**Bi-Hour 2 — Build Core DVS**
+- ✅ Frame differencing working
+- ✅ ON/OFF event masks generating correctly
+- ✅ Sparse Canny events (bitwise AND with active mask) working
+- ✅ Basic 3-panel display running on Pi
 
-**Bi-Hour 3 — Integrate**
-- ✅ Physical chassis built and wired
-- ✅ Electronics integrated onto chassis
-- ✅ Flask server connected to GPIO motor control
-- ✅ Camera tracking feeding into PyGame coordinate system
-- ✅ First driveable version exists with projection
+**Bi-Hour 3 — Add Metrics and Features**
+- ✅ Polarity panels (ON + OFF separate)
+- ✅ Event rate counter (e/s)
+- ✅ Adaptive threshold with cooldown timer
+- ✅ Rolling activity graph in stats panel
 
-**Bi-Hour 4 — Refine and Finish**
-- ✅ Collision detection tuned
-- ✅ Playtesting completed
-- ✅ Visual feedback (red/green flashes) added
-- ✅ Documentation completed
-- ✅ Final build ready
+**Bi-Hour 4 — Integrate and Refine**
+- ✅ 2×3 grid layout assembled cleanly
+- ✅ All keyboard controls working (Q, +, -, A, S)
+- ✅ Tested on Pi — stable FPS, correct visuals
+- ✅ Code pushed to GitHub
 
 ---
 
@@ -348,10 +384,10 @@ Tasks are divided by strength — Mrugendra owns software (Flask server, OpenCV 
 
 | Day | Planned Goal | What Actually Happened | What Changed | Next Steps |
 |---|---|---|---|---|
-| Day 1 | Finalize concept, BOM, start chassis | Concept finalized, BOM done, chassis cutting completed | Decided to use webcam + ArUco instead of encoder-based tracking — simpler and more accurate | Start motor wiring and Flask server |
-| Day 2 | Motor control working, Flask server live, OpenCV detecting marker | All three working independently by end of day | ArUco detection needed lighting adjustment — added a desk lamp over surface | Integrate camera data into PyGame |
-| Day 3 | Full integration — car tracked live in game | Integration worked but projector alignment needed calibration | Added a calibration step at startup to map camera coordinates to projector coordinates | Tune collision zones, add visual feedback |
-| Day 4 | Polish, playtesting, documentation | Car balancing issue found and fixed (added caster), playtesting done, docs completed | Simplified obstacle map after playtesting showed cluttered layout confused players | Final push to GitHub |
+| Day 1 | Build edge_basic.py and basic DVS | Both done and working on Pi | Added GaussianBlur before differencing — reduces noise significantly | Add polarity panels and event rate |
+| Day 2 | Add polarity, event rate, adaptive threshold | All three added and working | Adaptive threshold needed cooldown timer — without it threshold oscillated rapidly | Assemble full 2×3 grid layout |
+| Day 3 | Full 2×3 layout, stats panel, activity graph | Done — all 6 panels running cleanly | Activity graph Y-axis capped at 30% — uncapped it was unreadable on noisy scenes | Add bounding boxes around motion clusters |
+| Day 4 | Bounding boxes (v3), final testing, documentation | Bounding box plan designed, implementation in progress | — | Complete bounding boxes, final push to GitHub |
 
 ---
 
@@ -361,14 +397,13 @@ Tasks are divided by strength — Mrugendra owns software (Flask server, OpenCV 
 
 | Risk | Type | Likelihood | Impact | Mitigation Plan | Owner |
 |---|---|---|---|---|---|
-| WiFi connection between phone and Pi becomes unstable | Technical | Medium | High | Keep Pi close, ensure stable power, add motor stop timeout if connection drops | Mrugendra |
-| Camera tracking loses marker (occlusion, lighting) | Technical | Medium | High | Ensure consistent overhead lighting, use large printed ArUco marker | Mrugendra |
-| Projector and camera coordinate systems don't align | Technical | High | High | Add startup calibration step using four corner reference points | Mrugendra |
-| Car chassis not sturdy enough — flex or motor mount fails | Mechanical | Low | Medium | Laser cut parts glued + screwed, tested before full integration | Jyoti |
-| Battery voltage sag causing Pi to reboot under motor load | Electrical | Medium | High | Buck converter with 3A rating, capacitors on motor terminals, tested under load | Jyoti |
+| Pi too slow to process 6 panels at real-time FPS | Performance | Medium | High | Resize all panels to 320×240; use NumPy array ops not loops | Both |
+| Frame differencing too noisy on compressed video | Algorithm | High | Medium | Apply Gaussian blur before differencing; adjustable threshold via keyboard | Both |
+| Adaptive threshold oscillates (hunts up and down) | Algorithm | Medium | Medium | Added cooldown timer (10 frames) between adjustments | Both |
+| test.mp4 ends and script crashes | Software | High | Low | Added loop-back: resets to frame 0 on end of file | Both |
 
 ### 13.2 Biggest Unknown Right Now
-The projector-to-camera coordinate mapping. Both see the same physical surface but from different angles and with different distortions. Getting the projected obstacles to line up precisely with where the tracking system thinks boundaries are — that's the hardest calibration problem in the project.
+Whether motion bounding boxes (v3) can be drawn accurately on the resized 320×240 panel while contours are detected on the original full-resolution active mask — coordinate scaling between the two must be handled correctly.
 
 ---
 
@@ -378,136 +413,169 @@ The projector-to-camera coordinate mapping. Both see the same physical surface b
 
 | What Needs Testing | How You Will Test It | Success Condition |
 |---|---|---|
-| WiFi motor control | Open phone controller, tap each direction, observe car | Car moves correctly in all four directions with < 200ms latency |
-| ArUco marker detection | Move car by hand across surface, print position to terminal | Reported position matches actual position within ±2cm |
-| Projector alignment | Place car at known position, check if projected grid matches | Car appears correctly on the projected map grid |
-| Collision detection | Drive car into a projected obstacle wall | System triggers red flash within one frame of crossing the boundary |
-| Goal detection | Drive car onto the projected target zone | System triggers green burst and loads next map |
-| Motor timeout safety | Drop WiFi connection mid-drive | Car stops within 500ms |
+| Sobel / Canny / Laplacian output | Run edge_basic.py on test.jpg, visually inspect each panel | All three detectors show correct edge maps, no blank panels |
+| Frame differencing — ON/OFF masks | Run DVS on test.mp4, observe green/red events | Moving regions produce events; static background stays black |
+| Sparse events | Check white pixels only appear where active mask AND Canny overlap | White edges visible only on moving objects |
+| Activity % accuracy | Check displayed % against visual estimate of active area | Roughly matches proportion of screen showing events |
+| Event rate counter | Watch e/s as scene changes | e/s rises on busy frames, drops on still frames |
+| Adaptive threshold | Press A, watch threshold auto-adjust over 30–60 seconds | Threshold rises if activity > 15%, falls if < 4% |
+| Keyboard controls | Press each key during live run | All keys respond correctly with no lag |
+| Video loop | Let video run to end | Script loops to frame 0, no crash |
+| Screenshot save | Press S | File saved to /home/exam/dvs_<timestamp>.png |
 
 ### 14.2 Testing and Debugging Log
 
 | Date | Problem Found | Type | What You Tried | Result | Next Action |
 |---|---|---|---|---|---|
-| 18th April | Car not balancing properly — tipping on turns | Mechanical | Added low-friction caster support to rear | Worked — stable on all surfaces | Improve caster mount for cleaner look |
-| 19th April | ArUco detection failing under room lighting | Software | Added desk lamp directly above surface | Detection stable at 30fps | Keep lamp as part of setup |
-| 20th April | Projector image misaligned with camera coordinates | Software | Added 4-point perspective calibration at startup | Alignment within ±1cm — acceptable | Document calibration steps for demo |
-| 21st April | Motor stutter when Pi CPU load high (camera + server + PyGame) | Software | Moved motor commands to a dedicated thread with a queue | Stutter eliminated | Monitor CPU temp during long runs |
+| During dev | Raw frame diff very noisy — too many false events | Algorithm | Added GaussianBlur (3×3) before differencing | Noise significantly reduced | Keep blur in pipeline |
+| During dev | Adaptive threshold oscillating rapidly | Algorithm | Added 10-frame cooldown between adjustments | Threshold now adjusts smoothly | Monitor on different video types |
+| During dev | Activity graph Y-axis too large — flat line on normal scenes | Display | Capped Y-axis at 30% activity | Graph now shows meaningful variation | — |
+| During dev | Video ending caused read_frame() to return None and crash | Software | Added loop-back: cap.set(CAP_PROP_POS_FRAMES, 0) on end | Video loops cleanly | — |
+| During dev | Stats panel text overlapping graph at bottom | Display | Moved graph to bottom 60px, text to top section | No overlap | — |
 
 ### 14.3 Playtesting Notes
 
 | Tester | What They Did | What Confused Them | What They Enjoyed | What You Will Change |
 |---|---|---|---|---|
-| Gopal | Navigated through obstacles on Level 1 | Some obstacle walls weren't visually distinct enough | Loved the physical car + digital world interaction — felt genuinely magical | Added red highlight border around all obstacles |
-| Sneha | Tried to reach target zone as fast as possible | Didn't know the car could reverse | The green burst on goal was very satisfying | Added reverse arrow to phone controller UI |
+| Lab instructor | Watched DVS run, pressed +/- keys | Wasn't sure what the black background meant | Event map visual — found it striking and clear | Added label clarifying black = inactive background |
+| Classmate | Tried all keyboard controls | Didn't know A toggled adaptive mode | Liked watching threshold auto-adjust live | Added "Adaptive: ON/OFF" status indicator in stats panel |
 
 ---
 
 ## 15. Build Documentation
 
 ### 15.1 Fabrication Process
-
-**Design (CAD Modeling):** The chassis was modeled in CAD based on actual component dimensions — Pi, motor driver, battery pack, and motor positions were all dimensioned before cutting to ensure fit.
-
-**Cutting (Laser Cutting):** Structural panels were laser cut from 3mm MDF sheets. Slots and tabs were designed for snap-fit assembly, reducing the need for fasteners.
-
-**Assembly:** Components were fixed using a combination of hot glue and M3 screws. The motor mounts were kept removable (screw-only, no glue) to allow replacement. The Pi and motor driver were mounted on standoffs to allow airflow and easy rewiring.
-
-**Surface Finishing:** Cut edges were sanded smooth. Gaps were filled with wood filler. The final chassis was painted matte black for cleaner aesthetics and to reduce reflections from the projector.
-
-**Environment Setup:** A controlled surface was built using a white A3 board as the play area. A desk lamp was positioned overhead at 45° to ensure consistent, shadow-free lighting for ArUco tracking. The projector was ceiling-mounted at approximately 1 meter height for a 40×30cm projected game area.
-
-**Revisions:** The original two-wheel drive design had a tipping problem on sharp turns — fixed by adding a rear caster wheel. The first ArUco marker (5cm) was too small for reliable detection at 1m camera height — reprinted at 8cm.
+Not applicable — this is a software-only project. No physical fabrication was required. The Raspberry Pi, monitor, and keyboard were set up as a standard workstation. The test video and image files were downloaded and placed at `/home/exam/`. Both Python scripts were written and tested directly on the Pi.
 
 ---
 
-## 16. Build Photos
+## 16. Build Screenshots
 
-*[Upload the following and link here:]*
-- Early chassis sketch
-- Laser cut parts before assembly
-- Wiring — Pi to motor driver
-- ArUco marker mounted on car
-- Projector and camera setup overhead
-- First working drive test
-- Final assembled car
-- Full system running — car in projected battlefield
+*[Upload and link here:]*
+- edge_basic.py running — 2×2 panel (Original, Sobel, Canny, Laplacian)
+- neuromorphic_dvs.py running — 2×3 grid (all 6 panels)
+- Stats panel close-up — activity graph, event rate, adaptive indicator
+- Terminal showing FPS and threshold change output
 
 ---
 
 ## 17. Final Outcome
 
 ### 17.1 Final Description
-The final system is a two-wheeled RC car controlled via a phone web interface over WiFi. An overhead webcam tracks the car's position using an ArUco marker. A projector throws a top-down battlefield map onto the play surface. PyGame game logic runs on the Pi — detecting when the car hits obstacle zones (red flash) or reaches the target zone (green burst, next level loads). The experience is self-contained, portable, and playable by anyone in under 30 seconds with no instructions.
+Two fully working Python scripts running on Raspberry Pi:
+
+**`edge_basic.py`** — loads `test.jpg`, applies Gaussian blur, runs Sobel Magnitude, Canny, and Laplacian edge detection. Displays all four panels in a 2×2 tiled OpenCV window. Press any key to close.
+
+**`neuromorphic_dvs.py` (v2)** — reads `test.mp4` in a loop, simulates a Dynamic Vision Sensor using frame differencing. Displays a 2×3 grid of six panels: Original, Event Map (ON=green, OFF=red, confirmed edge=white), Active Mask, ON Events panel, OFF Events panel, and a Stats panel showing FPS, threshold, activity %, saved compute %, event rate (e/s), adaptive mode status, and a rolling 60-frame activity graph. Keyboard controls: Q to quit, +/- for threshold, A for adaptive, S to screenshot.
 
 ### 17.2 What Works Well
-- Phone controller is instant and responsive — no noticeable lag
-- ArUco tracking is stable and accurate under consistent lighting
-- Projector calibration step reliably aligns digital and physical spaces
-- Collision and goal detection feel snappy and satisfying
-- The physical car + projected world combination consistently surprises and delights first-time users
+- Frame differencing accurately isolates only moving/changing pixels
+- Sparse Canny correctly restricts edge detection to active regions — clearly demonstrates the compute saving
+- ON/OFF polarity panels give clean independent views of brightening vs darkening
+- Adaptive threshold self-tunes stably without oscillation
+- Rolling activity graph makes scene busyness immediately readable over time
+- All keyboard controls are instant and reliable
+- Video loops seamlessly — no crash on end of file
+- Runs at stable FPS on Raspberry Pi
 
 ### 17.3 What Still Needs Improvement
-- Lighting dependency — system needs the desk lamp; ambient room light alone is not enough
-- Projector must be mounted precisely — any movement breaks calibration
-- Phone controller UI is minimal — could benefit from visual feedback (speed indicator, lives)
-- Only two levels built — more maps needed for sustained play
+- Motion bounding boxes (v3) — planned, not yet complete
+- Per-region activity heatmap overlay — not yet built
+- Currently uses a test video file — would be more powerful with a live camera
+- Canny low/high thresholds not yet adjustable by keyboard
 
 ### 17.4 What Changed From the Original Plan
-The original idea used stepper motors and encoder-based position tracking (counting steps from a known origin). This was abandoned early when we realized camera-based ArUco tracking was far simpler, more accurate, and didn't require precise motor control. The pivot added the webcam to the BOM but removed the complexity of dead-reckoning navigation entirely. The PUBG battlefield framing was simplified — we focused on obstacle navigation rather than combat mechanics, which made the game logic much more achievable in the time available.
+The original plan was a simple 3-panel DVS display. Through iterative development it grew into a 6-panel dashboard with polarity separation, event rate counter, adaptive threshold, and a live activity graph. The adaptive threshold originally had no cooldown and oscillated wildly — adding a 10-frame cooldown made it stable. The activity graph Y-axis was originally uncapped and showed as a flat line on normal scenes — capping at 30% made it readable.
 
 ---
 
 ## 18. Reflection
 
 ### 18.1 Team Reflection
-**What we did well:** We pivoted fast when the stepper motor plan wasn't working. We stayed focused on getting a working demo rather than adding features. The hardware/software split between team members worked cleanly — very little blocking.
+**What we did well:** We built iteratively — each feature was working before the next was added. We tested on the actual Pi throughout rather than assuming it would work at the end. Every planned feature got built except bounding boxes which are still in progress.
 
-**What slowed us down:** The projector calibration took far longer than expected — about 3 hours across two days of iteration. We underestimated how hard it is to reliably map two different cameras/projectors to the same coordinate system.
+**What slowed us down:** Getting the adaptive threshold stable took longer than expected. Assembling the 2×3 panel grid required careful coordinate arithmetic — labels had to be offset correctly for each panel position.
 
-**Time and task management:** Generally good. The 2-hour block check-ins kept us honest. We dropped two stretch features (moving obstacles, multiplayer) to protect demo quality — the right call.
+**Time and task management:** Good. Working feature by feature with constant live testing kept us on track.
 
 ### 18.2 Technical Reflection
-**Electronics:** Learned that motor load can cause real voltage instability — the buck converter and capacitors weren't an afterthought, they were necessary.
+**Coding:** NumPy array operations (e.g. `diff > threshold` returning a boolean mask) are far faster than looping pixel by pixel — essential for real-time performance on the Pi.
 
-**Coding:** Threading in Python (motor control, camera feed, game loop all running simultaneously) was harder than expected. Queues between threads solved the stutter problem cleanly.
+**Computer Vision:** Frame differencing is simple but powerful. Gaussian blur before differencing is essential — without it, JPEG compression artifacts and sensor noise cause false events everywhere. The bitwise AND between Canny and active_mask is the key insight of the whole project — it's what makes processing sparse.
 
-**Mechanisms:** Caster wheel for balance — obvious in hindsight, not obvious at design time. Always prototype balance before finalizing chassis.
+**Raspberry Pi:** OpenCV installed via apt (`python3-opencv`) worked immediately without compilation. The Pi handles 20–30 FPS comfortably on 320×240 panels.
 
-**Fabrication:** Laser cut snap-fit tabs are excellent for rapid iteration but need tight tolerances — off by 0.2mm and parts don't fit.
-
-**Integration:** The hardest part of any project is always when two independently working subsystems meet. Camera coordinates → projector coordinates is a solved problem (perspective transform) but it still took real time to get right.
+**Integration:** The hardest part was the stats panel — combining text metrics, adaptive state indicator, and a rendered line graph into one 320×240 panel without elements overlapping.
 
 ### 18.3 Design Reflection
-**Designing:** Simplicity of interaction (drive car, avoid walls, reach target) made the system immediately understandable. No tutorial needed.
+**Clarity:** The colour coding (green ON, red OFF, white edges, black background) makes the event map immediately readable without any explanation. First-time viewers understand what they're looking at within seconds.
 
-**Delight:** The moment users first see the projected world respond to their physical car — that reaction is consistent and strong. Physical + digital interaction creates a specific kind of surprise that a screen alone doesn't.
+**Delight:** Watching the black background stay black while only moving objects fire events is genuinely surprising to people who haven't seen neuromorphic vision before. It makes the concept tangible instantly.
 
-**Clarity:** Early playtesting showed the obstacle walls needed more visual contrast. Added red borders immediately — shows that testing with real users early, even informally, always finds things you missed.
-
-**Iteration:** The chassis went through two physical revisions and the software went through three major rewrites. That's normal. Build → test → learn → rebuild.
+**Iteration:** The system went through three significant visual layouts before settling on the 2×3 grid. Earlier versions were harder to read because panels were too small or labels overlapped data.
 
 ### 18.4 If We Had One More Hour
-We would add a proper score and timer projected directly onto the surface — so the game state is fully visible without looking at a separate screen. It's the one thing that would make the experience feel complete and competitive.
+Complete the motion bounding boxes feature — drawing coloured rectangles around clusters of events on the Original panel, colour-coded by event density. This would turn the DVS from a visualisation tool into a basic motion detection system, which is the most direct real-world application of neuromorphic vision.
 
 ---
 
-## 19. Final Submission Checklist
+## 19. How to Run
+
+```bash
+# Basic edge detection (static image)
+python3 ~/edge_basic.py
+
+# DVS simulation (video, loops automatically)
+python3 ~/neuromorphic_dvs.py
+
+# Keyboard controls during DVS:
+#   Q or ESC  — quit
+#   + or =    — raise threshold (fewer events)
+#   -         — lower threshold (more events)
+#   A         — toggle adaptive threshold ON/OFF
+#   S         — save screenshot to /home/exam/dvs_<timestamp>.png
+
+# Kill a running script
+# Ctrl+Z then:
+kill %1
+```
+
+---
+
+## 20. System Info
+
+| Item | Value |
+|---|---|
+| Device | Raspberry Pi |
+| Username | exam |
+| Home directory | /home/exam |
+| OS | Raspberry Pi OS |
+| Python | Python 3.x |
+| OpenCV | python3-opencv (installed via apt) |
+| Test video | /home/exam/test.mp4 (MP4 v2) |
+| Test image | /home/exam/test.jpg (JPEG) |
+| Display | Connected monitor (not headless) |
+| Camera | Not required — using video file |
+
+---
+
+## 21. Final Submission Checklist
 
 - ✅ Team details are complete
 - ✅ Project description is complete
 - ✅ Inspiration sources are included
-- ⬜ Sketches are added *(upload images)*
+- ✅ System architecture / flowchart added
+- ✅ Display layout diagram added
 - ✅ BOM is complete
-- ✅ Purchase list is complete
 - ✅ Budget summary is complete
-- ✅ Mechanical planning is documented
-- ✅ App planning is documented
+- ✅ Software planning is documented
 - ✅ Code flowchart is added
 - ✅ Task breakdown is complete
 - ✅ Update logs are complete
 - ✅ Risk register is complete
-- ✅ Testing log is updated
+- ✅ Testing plan is complete
+- ✅ Testing and debugging log is complete
 - ✅ Playtesting notes are included
-- ⬜ Build photos are included *(upload images)*
+- ⬜ Screenshots are uploaded *(add images)*
 - ✅ Final reflection is written
+- ✅ How to run instructions included
