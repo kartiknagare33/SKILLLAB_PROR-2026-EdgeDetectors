@@ -18,8 +18,10 @@ Repository forked and renamed as: **SKILLLAB_PROR-2026-EdgeDetectors**
 
 | Name | Primary Role | Secondary Role | Strengths Brought to the Project |
 |---|---|---|---|
-| [Your Name] | Coding / Computer Vision | Documentation | Algorithm design, Python, OpenCV |
-| [Teammate Name] | Testing / Hardware Setup | Coding | Raspberry Pi setup, debugging |
+| Sahil Singh *(Team Lead)* | Hardware Setup & Integration | Project Coordination | Raspberry Pi setup, peripheral configuration, team management |
+| Kartik Nagare | Coding / Computer Vision | Testing | Algorithm design, Python, OpenCV, frame processing pipeline |
+| Shreyash Garud | UI / Display & Visualization | Documentation | Panel layout, display assembly, metrics rendering, README |
+| Kunal Sahasrabudhe | Testing & Debugging | Coding Support | Live testing on Pi, debugging, adaptive threshold validation |
 
 ### 1.3 Project Title
 **Neuromorphic DVS Simulation + Edge Detection on Raspberry Pi**
@@ -40,12 +42,11 @@ The second and main system (`neuromorphic_dvs.py`) simulates a Dynamic Vision Se
 
 ### 2.1 References
 
-| Name | Primary Role | Secondary Role | Strengths Brought to the Project |
-|---|---|---|---|
-| Sahil Singh *(Team Lead)* | Hardware Setup & Integration | Project Coordination | Raspberry Pi setup, peripheral configuration, team management |
-| Kartik Nagare | Coding / Computer Vision | Testing | Algorithm design, Python, OpenCV, frame processing pipeline |
-| Shreyash Garud | UI / Display & Visualization | Documentation | Panel layout, display assembly, metrics rendering, README |
-| Kunal Sahasrabudhe | Testing & Debugging | Coding Support | Live testing on Pi, debugging, adaptive threshold validation |
+| Source Type | Title / Link | What Inspired You |
+|---|---|---|
+| Research concept | Neuromorphic computing / Dynamic Vision Sensors (DVS cameras) | The idea that biological vision is event-driven, not frame-driven |
+| OpenCV documentation | https://docs.opencv.org | Sobel, Canny, Laplacian implementations and frame differencing |
+| Academic concept | Sparse computation in neural systems | Only processing what changes = massive compute savings |
 
 ### 2.2 Original Twist
 Most edge detection projects run all algorithms on every pixel of every frame — brute force. This project flips that: it first identifies *which* pixels have changed (active pixels), and only runs edge detection on those. This is true neuromorphic-style sparse processing. The visual output — green ON events, red OFF events, white confirmed edges on a black background — directly shows the brain-inspired computation happening in real time.
