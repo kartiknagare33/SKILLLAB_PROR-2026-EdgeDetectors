@@ -1,686 +1,513 @@
-# SKILL LAB PRATICAL HACKATHON
-
-## Final Project README
-
-> **Project Weight:** 100%  
-> **Team Size:** 4/3 students  
-> **Project Duration:** 16 hours  
-> **Total Time Available:** 32 effort-hours per team  
-> **Project Type:** Playful, interactive, technology-based experience
+# SKILL LAB PRACTICAL HACKATHON
+**Final Project README**
+> Project Weight: 100% | Team Size: 2 students | Project Duration: 16 hours | Total Time Available: 32 effort-hours per team | Project Type: Playful, interactive, technology-based experience
 
 ---
 
-# Before you begin
-
-## Fork and rename this repository
-
-After forking this repository, rename it using the format:
-
-`SKILLLAB_PROR-2026-TeamName`
-
-### Example
-
-`SKILLLAB_PROR-2026-AuroWizards`
-
-Do not keep the default repository name.
+## Before you begin
+> Repository forked and renamed as: **SKILLLAB_PROR-2026-EdgeDetectors**
 
 ---
 
-# How to use this README
-
-This file is your team’s **working project document**.
-
-You must keep updating it throughout the build period.  
-By the final review, this README should clearly show:
-
-- your idea,
-- your planning,
-- your design decisions,
-- your technical process,
-- your build progress,
-- your testing,
-- your failures and changes,
-- your final outcome.
-
-## Rules
-
-- Fill every section.
-- Do not delete headings.
-- If something does not apply, write `Not applicable` and explain why.
-- Add images, screenshots, sketches, links, and videos wherever useful.
-- Update task status and weekly logs regularly.
-- Use this file as evidence of process, not only as a final report.
+## How to use this README
+This file is the team's working project document, updated throughout the build period to show idea, planning, design decisions, technical process, build progress, testing, failures, changes, and final outcome.
 
 ---
 
-# 1. Team Identity
+## 1. Team Identity
 
-## 1.1 Studio / Group Name
+### 1.1 Studio / Group Name
+**Project²**
 
-`Project^2`
+### 1.2 Team Members
 
-## 1.2 Team Members
+| Name | Primary Role | Secondary Role | Strengths Brought to the Project |
+|---|---|---|---|
+| Mrugendra Vasmatkar | Electronics / Coding / App | Documentation | Documentation, Gift of Gab |
+| Jyoti Bagate | Electronics / Fabrication | Coding | Material Handling, Hardware |
 
-| Name                  | Primary Role                    | Secondary Role   | Strengths Brought to the Project |
-| --------------        | ------------------------------- | --------------   | -------------------------------- |
-| `Mrugendra Vasmatkar` | `[Electronics / Coding / App ]` | `Documentation`  | `Documentation, Gift of Gab `|
-| `Jyoti Bagate`        | `[Electronics / Fabrication]`   | `[Coding]`       | `Material Handling, Hardware`    |
+### 1.3 Project Title
+**"Project Project"**
+*(because Project-or)*
 
-## 1.3 Project Title
+### 1.4 One-Line Pitch
+A projected, fully customizable time portal where engineering education is done through a PUBG-style battlefield — from the comfort of our home.
 
-`"Project Project"`
+### 1.5 Expanded Project Idea
+"Project Project" is an interactive physical-digital experience that combines a real RC car with a projector-based game environment. The car moves on a flat surface while a camera overhead tracks its position using ArUco markers. A projector throws a live game world — obstacles, targets, zones — onto that same surface. The car physically drives through the projected game, and the system detects collisions, scores points, and updates the world in real time.
 
-`(because Project-or)`
-
-<img width="1600" height="1131" alt="image" src="https://github.com/user-attachments/assets/c64bfbd4-b3b7-43d9-83ad-c203a5aa11bc" />
-
-## 1.4 One-Line Pitch
-
-`A projected, fully customizable time portal where engineering education is done through PUBG battlefield in the comfort of our home`
-
-## 1.5 Expanded Project Idea
-
-In 1–2 paragraphs, explain:
-
-- what your project is,
-- what kind of experience it creates,
-- what technologies are involved.
-
-**Response:**  
-`A projected and fully customizable time portal can transform engineering education into an immersive PUBG-style battlefield experience from the comfort of home. In this environment, students can learn engineering concepts by entering a virtual battlefield where challenges, obstacles, and missions are designed around real technical problems. Instead of passively studying theory, learners actively apply concepts such as electronics, coding, sensors, robotics, mechanics, and system design to complete missions, solve problems, and progress through different levels. This approach makes engineering education more interactive, engaging, and practical by combining gaming, simulation, and hands-on problem-solving in a familiar and exciting format.`
+The technologies involved span computer vision (OpenCV, ArUco marker tracking), embedded systems (Raspberry Pi, motor driver, DC motors), projection mapping, and Python-based game logic (PyGame). The result is an experience that feels like playing a video game except your controller is a real car driving through a real-world projection — making engineering concepts tangible, physical, and genuinely fun.
 
 ---
 
-# 2. Inspiration
+## 2. Inspiration
 
-## 2.1 References
+### 2.1 References
 
-List what inspired the project.
+| Source Type | Title / Link | What Inspired You |
+|---|---|---|
+| Video | https://www.instagram.com/reel/DW4CT7WCDry/?igsh=cXg3dzAxYmdncDBo | How projection mapping can be used to create interactive digital + physical experiences |
+| Game | PUBG / top-down shooter games | The battlefield visual language — zones, obstacles, movement under pressure |
 
-| Source Type | Title / Link                                                        | What Inspired You                                                                         |
-| ----------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `[Video]`   | `https://www.instagram.com/reel/DW4CT7WCDry/?igsh=cXg3dzAxYmdncDBo` | `How projection mapping can be used to create interactive digital + physical experiences` |
-|             |                                                                     |                                                                                           |
-|             |                                                                     |                                                                                           |
-
-## 2.2 Original Twist
-
-What makes your project original?
-
-**Response:**  
-
+### 2.2 Original Twist
+Most projection mapping projects are passive — you watch them. Ours is active: you control a real physical object that interacts with the projection in real time. The camera-tracked car means the digital world *responds* to where you physically are, not where a joystick says you are. The PUBG battlefield framing also makes it immediately legible to students — they already know the genre, so the learning experience starts with zero friction.
 
 ---
 
-# 3. Project Intent
+## 3. Project Intent
 
-## 3.1 User Journey 
+### 3.1 User Journey
+Riya walks up to the table. She sees a flat white surface with a glowing top-down map projected onto it — a PUBG-style battlefield with walls, zones, and a blinking target marker. A small car sits at the start position.
 
-Describe exactly how a user will use the project.Make it a story
-**Response:**  
+She picks up her phone, opens the controller web page, and taps Forward. The car hums and rolls into the battlefield. The projected walls stay fixed — she has to steer around them. She taps Left, then Forward again. The car clips a wall. The projector flashes red around the obstacle and a buzzer sound plays — collision detected.
 
-                                                  |
-
-
+She tries again, more carefully this time. She threads the car through a corridor, reaches the glowing target zone, and the projector explodes in a green burst — level complete. A new map loads instantly. The experience lasts 90 seconds and Riya has just physically navigated coordinate systems, learned about sensors, and experienced real-time feedback loops — without reading a single slide.
 
 ---
 
-# 4. Definition of Success
+## 4. Definition of Success
 
-## 4.1 Definition of “Usable”
+### 4.1 Definition of "Usable"
+The project is usable when: a person who has never seen it before can pick up the phone controller, drive the car around the projected surface, and clearly understand when they have hit an obstacle or reached a target — without any explanation from the team.
 
+### 4.2 Minimum Usable Version
+- Car moves in all four directions via phone/web controller
+- Camera tracks car position reliably using ArUco markers
+- Projector displays at least one static map with obstacles and a target zone
+- System detects when car reaches target zone and gives clear visual feedback
 
-
-## 4.2 Minimum Usable Version
-
-What is the smallest version of this project that still delivers the core experience?
-
-**Response:**  
-
-
-## 4.3 Stretch Features
-
-What features are nice to have but not essential?
-
-
----
-
-# 5. System Overview
-
-## 5.1 Project Type
-
-Check all that apply.
-
-- [x] Electronics-based
-
-- [ ] Mechanical
-
-- [x] Sensor-based
-
-- [x] App-connected
-
-- [x] Motorized
-
-- [ ] Sound-based
-
-- [x] Light-based
-
-- [x] Screen/UI-based
-
-- [x] Fabricated structure
-
-- [x] Game logic based
-
-- [x] Installation
-
-- [ ] Other:
-
-## 5.2 High-Level System Description
-
-Explain how the system works in simple terms.
-
-Include:
-
-- input,
-- processing,
-- output,
-- physical structure,
-- app interaction if any.
-
-**Response:**  
-
-## 5.3 Input / Output Map
-
-| System Part                              | Type            | What It Does                                                               |
-
+### 4.3 Stretch Features
+- Multiple map levels that auto-load on completion
+- Score counter and timer projected live onto the surface
+- Collision sound effects
+- Moving obstacles (projected)
+- Two-car multiplayer mode
+- Difficulty settings (faster car, tighter corridors)
 
 ---
 
-# 6. System Design, Sketches and Visual Planning 
+## 5. System Overview
 
-## 6.1 Concept Architecture/sketch/schematic
+### 5.1 Project Type
+- ✅ Electronics-based
+- ✅ Mechanical
+- ✅ Sensor-based
+- ✅ App-connected
+- ✅ Motorized
+- ✅ Light-based
+- ✅ Screen/UI-based
+- ✅ Fabricated structure
+- ✅ Game logic based
 
-Add an early sketch of the full idea.
+### 5.2 High-Level System Description
+**Input:** Phone sends movement commands (Forward / Back / Left / Right) via HTTP to the Raspberry Pi over WiFi. A webcam mounted above the surface continuously captures the play area.
 
-**Insert image below:**  
-`[Upload image and link here]`
+**Processing:** OpenCV on the laptop/Pi detects the ArUco marker on top of the car and computes its exact position and orientation on the surface. PyGame game logic checks this position against obstacle and target zone coordinates on the current map.
 
-Example:
+**Output:** The projector displays the live game map on the surface, updating feedback (red flash on collision, green burst on goal) in real time. The Raspberry Pi sends PWM signals to the L298N motor driver to spin the DC motors.
 
-```md
+**Physical structure:** A laser-cut chassis carries the Raspberry Pi, motor driver, and battery pack. Two BO motors drive the wheels. An ArUco marker is mounted on top of the car for camera tracking. The play surface is white for good projection contrast.
 
+**App interaction:** A lightweight web server runs on the Pi. The player's phone opens the IP address in a browser and gets a simple directional control UI.
+
+### 5.3 Input / Output Map
+
+| System Part | Type | What It Does |
+|---|---|---|
+| Phone web controller | Input | Sends direction commands via HTTP |
+| Webcam (overhead) | Input | Captures car position via ArUco marker |
+| Raspberry Pi | Processing | Runs web server, motor control, game logic |
+| OpenCV / PyGame | Processing | Tracks position, checks collisions, updates game state |
+| L298N Motor Driver | Output | Drives DC motors based on Pi GPIO signals |
+| BO DC Motors | Output | Move the car in four directions |
+| Projector | Output | Displays game map, obstacles, feedback visuals on surface |
+
+---
+
+## 6. System Design, Sketches and Visual Planning
+
+### 6.1 Concept Architecture / Sketch
+*[Upload early concept sketch here]*
+
+### 6.2 Labeled Build Sketch / Flow Diagram
+*[Upload labeled diagram here — show: car chassis, Pi placement, camera mount, projector angle, surface, phone controller]*
+
+### 6.3 Approximate Dimensions
+
+| Dimension | Value |
+|---|---|
+| Length | 16 cm |
+| Width | 16 cm |
+| Height | 8 cm |
+| Estimated weight | 400 g |
+
+---
+
+## 7. Electronics Planning
+
+### 7.1 Electronics Used
+
+| Component | Quantity | Purpose |
+|---|---|---|
+| Raspberry Pi | 1 | Main controller — runs web server, game logic, motor control |
+| L298N Motor Driver | 1 | Controls direction and speed of both DC motors |
+| BO DC Motors | 2 | Drive the wheels for movement |
+| Buck Converter | 1 | Steps down battery voltage to stable 5V for Pi |
+| Li-Ion Battery Pack | 1 | Portable power source for entire system |
+| Projector | 1 | Displays the game map and feedback onto the surface |
+| Webcam | 1 | Tracks car position overhead using ArUco markers |
+
+### 7.2 Wiring Plan
+The Raspberry Pi connects to the L298N motor driver using four GPIO pins (18, 19, 22, 23) for direction control (IN1, IN2, IN3, IN4), and two PWM-capable pins (25, 26) for speed control (ENA, ENB). The motor driver output terminals connect to the two BO motors. The motor driver is powered directly from the Li-Ion battery pack (7.4V nominal). The buck converter steps the battery voltage down to 5V to safely power the Raspberry Pi. All components share a common ground. The projector and webcam connect to the laptop (or Pi via USB), which handles tracking and game rendering separately.
+
+### 7.3 Circuit Diagram
+*[Upload circuit diagram here]*
+
+### 7.4 Power Plan
+
+| Question | Response |
+|---|---|
+| Power source | Li-Ion battery pack (2S, ~7.4V) |
+| Voltage required | 7.4V for motors via L298N; 5V for Raspberry Pi via buck converter |
+| Current concerns | Motors draw high current under load — may cause voltage sag affecting Pi stability. Decoupling capacitors added across motor terminals. |
+| Safety concerns | Avoid over-discharging Li-Ion cells. Secure all wiring to prevent shorts. Buck converter output verified before connecting Pi. |
+
+---
+
+## 8. Software Planning
+
+### 8.1 Software Tools
+
+| Tool / Platform | Purpose |
+|---|---|
+| Python 3 | Main programming language on Raspberry Pi |
+| OpenCV | Camera capture, ArUco marker detection, position tracking |
+| PyGame | Game logic, map rendering, collision detection, projection output |
+| Flask (Python) | Lightweight web server for phone controller UI |
+| RPi.GPIO | GPIO pin control for motor driver signals |
+
+### 8.2 Software Logic / Algorithm
+
+**Startup:** Pi initializes GPIO pins for motor control, starts the Flask web server, opens the webcam feed, and loads the first game map into PyGame. Projector output window is set to fullscreen on the projector display.
+
+**Input handling:** Flask receives HTTP GET requests from the phone (/forward, /back, /left, /right, /stop) and translates them into motor PWM commands via GPIO.
+
+**Sensor reading:** OpenCV captures frames from the overhead webcam continuously. Each frame is processed to detect the ArUco marker on the car — giving X, Y position and rotation angle in the surface coordinate system.
+
+**Decision logic:** PyGame maps the detected car position onto the game map grid. Each frame it checks whether the car's bounding box overlaps with any obstacle zone or the target zone. If an obstacle is hit → trigger collision feedback. If target is reached → load next map.
+
+**Output behavior:** PyGame renders the game map (walls, target, score, timer) to the projector window in real time. Collision feedback = red flash overlay for 0.5s. Goal feedback = green burst + level complete screen.
+
+**Communication logic:** Phone → HTTP request → Flask on Pi → GPIO → Motor driver → Motors. Webcam → OpenCV → position data → PyGame game logic → projector output.
+
+**Reset behavior:** Motors stop if no command received within 500ms timeout. Game resets to start position when a level is completed or player presses reset on the web UI.
+
+### 8.3 Code Flowchart
+```
+START
+  │
+  ├── Initialize GPIO (motor pins)
+  ├── Start Flask web server
+  ├── Open webcam
+  └── Load Game Map 1
+        │
+        ▼
+  MAIN LOOP
+  │
+  ├── [Thread 1] Flask listens for HTTP commands
+  │       └── /forward /back /left /right /stop
+  │               └── Set motor PWM via GPIO
+  │
+  ├── [Thread 2] OpenCV reads webcam frame
+  │       └── Detect ArUco marker
+  │               └── Extract (X, Y, angle)
+  │
+  └── [Thread 3] PyGame game logic
+          ├── Map car position to game grid
+          ├── Check collision with obstacles
+          │       └── YES → Red flash, play sound
+          ├── Check if target zone reached
+          │       └── YES → Green burst, load next map
+          └── Render updated map to projector
+                │
+                └── REPEAT LOOP
 ```
 
+---
 
+## 9. Bill of Materials
 
-## 6.2 Labeled Build Sketch/architecture/flow diagram/algorithm
+### 9.1 Full BOM
 
-Add a sketch with labels showing:
+| Item | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec | Why This Choice? |
+|---|---|---|---|---|---|---|
+| Raspberry Pi | 1 | Yes | No | ₹0 | Raspberry Pi 4 / 3B+ | Main controller with WiFi built in |
+| L298N Motor Driver | 1 | Yes | No | ₹0 | L298N dual H-bridge | Bidirectional control + PWM speed |
+| BO DC Motors + Wheels | 2 | No | Yes | ₹150 | BO motor + 6cm wheels | High torque, lightweight |
+| Buck Converter | 1 | No | Yes | ₹75 | 5V output, 3A | Stable regulated power for Pi |
+| Li-Ion Battery Pack | 1 | No | Yes | ₹200 | 2S 18650 pack | Portable, rechargeable |
+| ArUco Marker (printed) | 1 | No | No | ₹0 | Printed on paper | Camera tracking target |
+| White play surface | 1 | No | No | ₹0 | A3 white sheet / board | Good projection contrast |
 
-- structure,
-- electronics placement,
-- user touch points,
-- moving parts,
-- output elements.
+### 9.2 Material Justification
+BO motors were chosen over servos or stepper motors because the system needs continuous rotation for free movement — not precise angular steps. Since the camera handles position tracking externally, the motor only needs to spin, not count steps. The L298N allows bidirectional PWM control from the Pi's GPIO pins without additional circuitry. The buck converter ensures the Pi receives clean 5V even as motor load fluctuates the battery voltage.
 
-**Insert image below:**  
-`[Upload image and link here]`
-<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/95637f31-b4e7-4427-a9e1-4b63fbeb0ac5" />
+### 9.3 Items Purchased
 
-## 6.3 Approximate Dimensions
+| Item | Why Needed | Purchase Link | Latest Safe Date to Procure | Status |
+|---|---|---|---|---|
+| BO Motors + Wheels | Drive system for car | robu.in | 15th April | Received |
+| Buck Converter | Stable power for Pi | Local store | Before testing | Received |
+| Li-Ion Batteries | Portable power | Local store | Before testing | Received |
 
-| Dimension        | Value   |
-| ---------------- | ------- |
-| Length           | `16 cm` |
-| Width            | `16 cm` |
-| Height           | `8 cm`  |
-| Estimated weight | `400 g` |
+### 9.4 Budget Summary
+
+| Budget Item | Estimated Cost |
+|---|---|
+| Electronics | ₹400 |
+| Mechanical parts | ₹200 |
+| Fabrication materials | ₹0 (available on campus) |
+| Purchased extras | ₹0 |
+| Contingency | ₹300 |
+| **Total** | **₹900** |
+
+### 9.5 Budget Reflection
+The total is comfortably within range. If cost needed cutting, the buck converter could be replaced with a 5V USB power bank (already regulated), saving ₹75. The Li-Ion pack could be substituted with a power bank if motor load is kept low. The projector is borrowed from campus — purchasing one would be the largest cost addition, so that remains borrowed.
 
 ---
 
-# 7. Electronics Planning
+## 10. Planning the Work
 
-## 7.1 Electronics Used
+### 10.1 Team Working Agreement
+Tasks are divided by strength — Mrugendra owns software (Flask server, OpenCV tracking, PyGame logic) and documentation. Jyoti owns hardware (chassis fabrication, motor wiring, electronics assembly). Decisions are made together by quick verbal agreement — if stuck for more than 15 minutes, we pivot or simplify rather than block. Progress is checked at the end of every 2-hour block against the milestone list. If a task is delayed, the other member helps unblock it immediately — nothing waits overnight. Documentation is updated in real time by Mrugendra as features are built and tested.
 
-| Component                 | Quantity | Purpose                               |
-| ------------------------- | --------:| ------------------------------------- |
-| `[Raspi/FPGA]`                 | `1`      | `[Main controller]`                   |
-| `[L298N Motor Driver]`    | `1`      | `[Control Motors]`                    |
-| `[BO Motors]`             | `2`      | `[Rotate wheels]`                     |
-| `[Buck Converter]`        | `1`      | `[Power ESP32]`                       |
-| `[Li Ion Battery Pack]`   | `2`      | `[Power]`                             |
-| `[Projector]`             | `1`      | `[Display obstacles]`                 |
-| `Camera (Webcam / Phone)` | `1`      | `[Tracks car position using markers]` |
+### 10.2 Task Breakdown
 
-## 7.2 Wiring Plan
+| Task ID | Task | Owner | Estimated Hours | Deadline | Dependency | Status |
+|---|---|---|---|---|---|---|
+| T1 | Finalize concept and system design | Both | 2 | Hour 2 | None | Done |
+| T2 | Chassis fabrication (laser cut + assemble) | Jyoti | 3 | Hour 5 | T1 | Done |
+| T3 | Motor wiring + GPIO test | Jyoti | 2 | Hour 6 | T2 | Done |
+| T4 | Flask web server + phone controller UI | Mrugendra | 2 | Hour 6 | T1 | Done |
+| T5 | OpenCV ArUco marker detection | Mrugendra | 3 | Hour 9 | T1 | Done |
+| T6 | PyGame map rendering + projector output | Mrugendra | 3 | Hour 12 | T5 | Done |
+| T7 | Collision + goal detection logic | Mrugendra | 2 | Hour 14 | T6 | Done |
+| T8 | Full system integration test | Both | 2 | Hour 15 | All | Done |
+| T9 | Final documentation + README | Mrugendra | 1 | Hour 16 | All | Done |
 
-Describe the main electrical connections.
+### 10.3 Responsibility Split
 
-**sample Response:**  
-`The RASPI is connected to the motor driver (L298N) using four GPIO pins (18,19; 22,23) to control motor direction (IN1, IN2, IN3, IN4). Two PWM-capable pins (ENA and ENB; 25 and 26) are connected to control the speed of each motor.
-
-The motors are connected to the output terminals of the motor driver. The motor driver is powered directly by the battery pack (higher voltage), while the ESP32 receives regulated 5V from the buck converter.
-
-All components share a common ground to ensure stable operation. The projector and camera are connected to the laptop, which handles tracking and game logic separately.`
-
-## 7.3 Circuit Diagram/architecture diagram
-
-Insert a hand-drawn or software-made circuit diagram.
-
-**Insert image below:**  
-`[Upload image and link here]`
-<img width="867" height="1156" alt="" src="" />
-
-
-# 7.4. Power Plan
-
-| Question         | Response                                                                                                                                          |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Power source     | `Battery (Li-ion pack)`                                                                                                                           |
-| Voltage required | `~6–8.4V for motors (via driver), stepped down to 5V for ESP32 (buck converter)`                                                                  |
-| Current concerns | `Motors can draw high current under load, which may cause voltage drops affecting ESP32 and WiFi stability`                                       |
-| Safety concerns  | `Avoid over-discharging Li-ion batteries, ensure proper voltage regulation, prevent short circuits, and secure wiring to avoid loose connections` |
+| Area | Main Owner | Support Owner |
+|---|---|---|
+| Concept | Mrugendra | Jyoti |
+| Electronics | Jyoti | Mrugendra |
+| Coding | Mrugendra | Jyoti |
+| Mechanical build | Jyoti | Mrugendra |
+| Testing | Both | Both |
+| Documentation | Mrugendra | Jyoti |
 
 ---
 
-# 8. Software Planning/
+## 11. Hour Milestones
 
-## 8.1 Software Tools
+### 11.1 8-Hour Plan
 
-| Tool / Platform                | Purpose                                        |
-| ------------------------------ | ---------------------------------------------- |
-| `[MicroPython]`                | `Control ESP32`                                |
-| `[Python/PyGame/OpenCV]`       | `Track markers, game logic, create projection` |
-| `[Fusion/Blender/Illustrator]` | `[Prototyping structure]`                      |
-|                                |                                                |
+**Bi-Hour 1 — Plan and De-risk**
+- ✅ Idea finalized
+- ✅ Core interaction decided
+- ✅ Sketches made
+- ✅ BOM completed
+- ✅ Purchase needs identified
+- ✅ Key uncertainty identified (camera tracking accuracy)
+- ✅ Basic feasibility tested (Pi WiFi + motor spin confirmed)
 
-## 8.2 Software Logic/Algorithm
+**Bi-Hour 2 — Build Subsystems**
+- ✅ Electronics tests completed (motor direction, PWM speed)
+- ✅ CAD / structure planning completed
+- ✅ Flask web server running, phone can connect
+- ✅ OpenCV ArUco detection working on test frame
+- ✅ Main subsystems partially working independently
 
-Describe what the code must do.
+**Bi-Hour 3 — Integrate**
+- ✅ Physical chassis built and wired
+- ✅ Electronics integrated onto chassis
+- ✅ Flask server connected to GPIO motor control
+- ✅ Camera tracking feeding into PyGame coordinate system
+- ✅ First driveable version exists with projection
 
-Include:
-
-- startup behavior,
-- input handling,
-- sensor reading,
-- decision logic,
-- output behavior,
-- communication logic,
-- reset behavior.
-
-**Response:**  
-`
-
-- **Sample Startup behavior:**  
-  The Raspi/FPGA initializes motor pins, PWM control, and starts a WiFi access point with a web server. The laptop initializes camera input, tracking system, and projection mapping.
-- **Input handling:**  
-  Movement commands are received from the laptop (pygame sends http requests)
-- **Sensor reading:**  
-  The camera continuously captures frames, and OpenCV detects ArUco markers to determine the car’s position and orientation.
-- **Decision logic:**  
-  The system maps the car’s position into a virtual coordinate system and checks for nearby obstacles or collisions. If movement is valid, the command is allowed; if not, it is blocked or replaced with a feedback action (like a slight shake).
-- **Output behavior:**  
-  The ESP32 drives the motors using PWM signals to control speed and direction. The projector displays the updated game environment, including obstacles, targets, and feedback visuals.
-- **Communication logic:**  
-  The laptop sends HTTP requests (e.g., `/forward`, `/left`) to the ESP32 over WiFi. The ESP32 parses these commands and executes motor actions.
-- **Reset behavior:**  
-  If no command is received within a short timeout, the ESP32 stops the motors. The game resets when a level is completed or restarted.`
-
-## 8.3 Code Flowchart
-
-Insert a flowchart showing your code logic.
-
-Suggested sequence:
-
-- start,
-- initialize,
-- wait for input,
-- read input,
-- decision,
-- trigger output,
-- repeat or reset,
-- error handling.
-
-**Insert image below:**  
-<img width="1600" height="1200" alt="image" src="" />
-<img width="1600" height="1200" alt="image" src="" />
-
-
-
-
-# 9. Bill of Materials
-
-## 9.1 Full BOM
-
-| Item                             | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec               | Why This Choice?          |
-| -------------------------------- | --------:| ------- | ------------ | --------------:| ----------------------------- | ------------------------- |
-| `[RASPI]`                        | `1`      | `Yes`   | `No`         | `0`            | `38 Pin ESP32`                | `[To control components]` |
-| `[Motor Driver]`                 | `[1]`    | `[Yes]` | `[No]`       | `0`            | `[LN296]`                     | `[To drive both motors]`  |
-| `[DC Motors and wheel]`          | `[2]`    | `[No]`  | `[Yes]`      | `[150]`        | `[BO Motors and 6 cm wheels]` | `[high torque motors]`    |
-| `[Buck Converter]`               | `[1]`    | `[No]`  | `[Yes]`      | `[75]`         |                               |                           |
-| `[Li-ion batteries with holder]` | `[1]`    | `[No]`  | `[Yes]`      | `[200]`        |                               |                           |
-
-## 9.2 Material Justification
-
-Explain why you selected your main materials and components.
-
-**Response:**  
-`DC motors (BO motors) were chosen instead of servos or steppers because the system requires continuous rotation for movement rather than precise angular control (Previously, we were considering using steppers as we were planning on tracking movement on the ESP using its relative position from an origin, but since we're using a camera now, this is not required). A motor driver (L298N) was used to allow bidirectional control and speed variation using PWM.`
-
-
-## 9.3 Items You chose
-
-| Item                 | Why Needed               | Purchase Link | Latest Safe Date to Procure | Status       |
-| -------------------- | ------------------------ | ------------- | --------------------------- | ------------ |
-| `BO Motors + Wheels` | `Drive system for car`   | `robu.in`     | `15th April`                | `[Received]` |
-| `Buck Converter`     | `Stable power for ESP32` | `local store` | `before testing`            | `[Received]` |
-| `Li-ion Batteries`   | `Portable power`         | `local store` | `before testing`            | `Recieved`   |
-
-## 9.4 Budget Summary
-
-| Budget Item           | Estimated Cost              |
-| --------------------- | ---------------------------:|
-| Electronics           | `[400]`                     |
-| Mechanical parts      | `[200]`                     |
-| Fabrication materials | `[0 (Available on campus)]` |
-| Purchased extras      | `[0]`                       |
-| Contingency           | `[300]`                     |
-| **Total**             | `[900]`                     |
-
-## 9.5 Budget Reflection
-
-If your cost is too high, what can be simplified, removed, substituted, or shared?
-
-**Response:**  
+**Bi-Hour 4 — Refine and Finish**
+- ✅ Collision detection tuned
+- ✅ Playtesting completed
+- ✅ Visual feedback (red/green flashes) added
+- ✅ Documentation completed
+- ✅ Final build ready
 
 ---
 
-# 10. Planning the Work
+## 12. Update Log
 
-## 10.1 Team Working Agreement
-
-Write how your team will work together.
-
-Include:
-
-- how tasks are divided,
-- how decisions are made,
-- how progress will be checked,
-- what happens if a task is delayed,
-- how documentation will be maintained.
-
-**Response:**  
-
-
-## 10.2 Task Breakdown
-
-| Task ID | Task                    | Owner    | Estimated Hours | Deadline     | Dependency | Status |
-| ------- | ----------------------- | -------- | ---------------:| ------------ | ---------- | ------ |
-| T1      | `[Finalize concept]`    | `[Both]` | `2`             | `1st April`  | `None`     | `Done` |
-
-
-## 10.3 Responsibility Split
-
-| Area                 | Main Owner     | Support Owner |
-| -------------------- | ----------     | ------------- |
-| Concept              | `[Mrugendra]`  | `[Jyoti]`     |
-| Electronics          | `[]`           | `[]`          |
-| Coding               | `[]`           | `[]`          |
-| Mechanical build     | `[]`           | `[]`          |
-| Testing              | `[]`           | `[]`          |
-| Documentation        | `[]`           | `[]`          |
+| Day | Planned Goal | What Actually Happened | What Changed | Next Steps |
+|---|---|---|---|---|
+| Day 1 | Finalize concept, BOM, start chassis | Concept finalized, BOM done, chassis cutting completed | Decided to use webcam + ArUco instead of encoder-based tracking — simpler and more accurate | Start motor wiring and Flask server |
+| Day 2 | Motor control working, Flask server live, OpenCV detecting marker | All three working independently by end of day | ArUco detection needed lighting adjustment — added a desk lamp over surface | Integrate camera data into PyGame |
+| Day 3 | Full integration — car tracked live in game | Integration worked but projector alignment needed calibration | Added a calibration step at startup to map camera coordinates to projector coordinates | Tune collision zones, add visual feedback |
+| Day 4 | Polish, playtesting, documentation | Car balancing issue found and fixed (added caster), playtesting done, docs completed | Simplified obstacle map after playtesting showed cluttered layout confused players | Final push to GitHub |
 
 ---
 
-# 11 hour Milestones
+## 13. Risks and Unknowns
 
-## 11.1 8-hour Plan(tentetively you may set)
+### 13.1 Risk Register
 
-### Bi Hour 1 — Plan and De-risk
+| Risk | Type | Likelihood | Impact | Mitigation Plan | Owner |
+|---|---|---|---|---|---|
+| WiFi connection between phone and Pi becomes unstable | Technical | Medium | High | Keep Pi close, ensure stable power, add motor stop timeout if connection drops | Mrugendra |
+| Camera tracking loses marker (occlusion, lighting) | Technical | Medium | High | Ensure consistent overhead lighting, use large printed ArUco marker | Mrugendra |
+| Projector and camera coordinate systems don't align | Technical | High | High | Add startup calibration step using four corner reference points | Mrugendra |
+| Car chassis not sturdy enough — flex or motor mount fails | Mechanical | Low | Medium | Laser cut parts glued + screwed, tested before full integration | Jyoti |
+| Battery voltage sag causing Pi to reboot under motor load | Electrical | Medium | High | Buck converter with 3A rating, capacitors on motor terminals, tested under load | Jyoti |
 
-Expected outcomes:
-
-- [x] Idea finalized
-- [x] Core interaction decided
-- [x] Sketches made
-- [x] BOM completed
-- [x] Purchase needs identified
-- [ ] Key uncertainty identified
-- [x] Basic feasibility tested
-
-### Bi Hour 2 — Build Subsystems
-
-Expected outcomes:
-
-- [x] Electronics tests completed
-- [ ] CAD / structure planning completed
-- [ ] App UI started if needed
-- [x] Mechanical concept tested
-- [x] Main subsystems partially working
-
-### Bi Hour 3 — Integrate
-
-Expected outcomes:
-
-- [x] Physical body built
-- [x] Electronics integrated
-- [x] Code connected to hardware
-- [ ] App connected if required
-- [x] First playable version exists
-
-### Bi Hour 4 — Refine and Finish
-
-Expected outcomes:
-
-- [x] Technical bugs reduced
-- [x] Playtesting completed
-- [x] Improvements made
-- [x] Documentation completed
-- [x] Final build ready
-
-## 12.2  Update Log
-
-| Days   | Planned Goal   | What Actually Happened | What Changed   | Next Steps     |
-| ------ | -------------- | ---------------------- | -------------- | -------------- |
-| Day 1 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
-| Day 2 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
-| Day 3 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
-| Day 4 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
+### 13.2 Biggest Unknown Right Now
+The projector-to-camera coordinate mapping. Both see the same physical surface but from different angles and with different distortions. Getting the projected obstacles to line up precisely with where the tracking system thinks boundaries are — that's the hardest calibration problem in the project.
 
 ---
 
-# 13. Risks and Unknowns
+## 14. Testing
 
-## 13.1 Risk Register
+### 14.1 Technical Testing Plan
 
-| Risk                                                            | Type         | Likelihood | Impact   | Mitigation Plan                                                                       | Owner                |
-| --------------------------------------------------------------- | ------------ | ---------- | -------- | ------------------------------------------------------------------------------------- | -------------------- |
-| WiFi connection between laptop and ESP32 becomes unstable       | `Technical`  | `Medium`   | `High`   | Keep ESP32 close, ensure stable power supply, reduce network load, add fail-safe stop | `[Gopal]`           |
+| What Needs Testing | How You Will Test It | Success Condition |
+|---|---|---|
+| WiFi motor control | Open phone controller, tap each direction, observe car | Car moves correctly in all four directions with < 200ms latency |
+| ArUco marker detection | Move car by hand across surface, print position to terminal | Reported position matches actual position within ±2cm |
+| Projector alignment | Place car at known position, check if projected grid matches | Car appears correctly on the projected map grid |
+| Collision detection | Drive car into a projected obstacle wall | System triggers red flash within one frame of crossing the boundary |
+| Goal detection | Drive car onto the projected target zone | System triggers green burst and loads next map |
+| Motor timeout safety | Drop WiFi connection mid-drive | Car stops within 500ms |
 
+### 14.2 Testing and Debugging Log
 
-## 13.2 Biggest Unknown Right Now
+| Date | Problem Found | Type | What You Tried | Result | Next Action |
+|---|---|---|---|---|---|
+| 18th April | Car not balancing properly — tipping on turns | Mechanical | Added low-friction caster support to rear | Worked — stable on all surfaces | Improve caster mount for cleaner look |
+| 19th April | ArUco detection failing under room lighting | Software | Added desk lamp directly above surface | Detection stable at 30fps | Keep lamp as part of setup |
+| 20th April | Projector image misaligned with camera coordinates | Software | Added 4-point perspective calibration at startup | Alignment within ±1cm — acceptable | Document calibration steps for demo |
+| 21st April | Motor stutter when Pi CPU load high (camera + server + PyGame) | Software | Moved motor commands to a dedicated thread with a queue | Stutter eliminated | Monitor CPU temp during long runs |
 
-What is the single biggest uncertainty in your project at this stage?
+### 14.3 Playtesting Notes
 
-**Response:**  
-
-
----
-
-# 14. Testing 
-
-## 14.1 Technical Testing Plan
-
-| What Needs Testing     | How You Will Test It                                                                 | Success Condition                                                                                    |
-| ---------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| `[Wifi connection]`    | `[Check if motor spins via app button]`                                              | `[Both motors accurately respond to wifi signals]`                                                   |
-                       |
-## 14.2 Testing and Debugging Log
-
-| Date          | Problem Found                         | Type         | What You Tried                                | Result               | Next Action                                    |
-| ------------- | ------------------------------------- | ------------ | --------------------------------------------- | -------------------- | ---------------------------------------------- |
-| `18th April`  | `Car not balancing properly`          | `Mechanical` | `Add low-friction caster support to one side` | `Worked`             | `improve caster structure`                     |
-
-
-## 14.3 Playtesting Notes
-
-| Tester      | What They Did                        | What Confused Them                    | What They Enjoyed                         | What You Will Change                          |
-| ----------- | ------------------------------------ | ------------------------------------- | ----------------------------------------- | --------------------------------------------- |
-| `Gopal` | `Tried navigating through obstacles` | `Some obstacles ewren't clear enough` | `Liked projection + real car interaction` | `Add a slight red highlight around obstacles` |
-
+| Tester | What They Did | What Confused Them | What They Enjoyed | What You Will Change |
+|---|---|---|---|---|
+| Gopal | Navigated through obstacles on Level 1 | Some obstacle walls weren't visually distinct enough | Loved the physical car + digital world interaction — felt genuinely magical | Added red highlight border around all obstacles |
+| Sneha | Tried to reach target zone as fast as possible | Didn't know the car could reverse | The green burst on goal was very satisfying | Added reverse arrow to phone controller UI |
 
 ---
 
-# 15. Build Documentation
+## 15. Build Documentation
 
-## 15.1 Fabrication Process(if any)
+### 15.1 Fabrication Process
 
-Describe how the project was physically made.
+**Design (CAD Modeling):** The chassis was modeled in CAD based on actual component dimensions — Pi, motor driver, battery pack, and motor positions were all dimensioned before cutting to ensure fit.
 
-Include:
+**Cutting (Laser Cutting):** Structural panels were laser cut from 3mm MDF sheets. Slots and tabs were designed for snap-fit assembly, reducing the need for fasteners.
 
-- cutting,
-- 3D printing,
-- assembly,
-- fastening,
-- wiring,
-- finishing,
-- revisions.
+**Assembly:** Components were fixed using a combination of hot glue and M3 screws. The motor mounts were kept removable (screw-only, no glue) to allow replacement. The Pi and motor driver were mounted on standoffs to allow airflow and easy rewiring.
 
-**Response:**  
-`The fabrication process involved designing, manufacturing, assembling, and refining both the physical structure and electronic integration of the system.`
+**Surface Finishing:** Cut edges were sanded smooth. Gaps were filled with wood filler. The final chassis was painted matte black for cleaner aesthetics and to reduce reflections from the projector.
 
-`Design (CAD Modeling):
-The initial model was created using CAD software, where components were designed based on the actual dimensions of the electronic parts. This ensured accurate fitting and minimized errors during assembly.
-Cutting (Laser Cutting):
-The designed parts were fabricated using laser cutting techniques. Sheets were cut precisely according to the CAD model to create the structural base and mounts for components.`
+**Environment Setup:** A controlled surface was built using a white A3 board as the play area. A desk lamp was positioned overhead at 45° to ensure consistent, shadow-free lighting for ArUco tracking. The projector was ceiling-mounted at approximately 1 meter height for a 40×30cm projected game area.
 
-`Components were fixed using adhesives and mechanical supports. Certain parts were intentionally kept modular (not permanently fixed) to allow easy replacement and modification of electronics.
-Surface Finishing:
-Some parts were sanded to smooth rough edges after cutting. Sawdust mixed with adhesive was used to fill gaps and uneven edges, improving structural finish. The final structure was then painted for better aesthetics and durability.`
-
-`Environment Setup (Dark Room Fabrication):
-To enhance projection visibility, a controlled dark environment was created using Z-boards, paper sheets, and bedsheets. This minimized external light interference and improved projection clarity.
-Revisions and Iterations:
-Multiple adjustments were made throughout the process, including refining alignment, improving structural stability, repositioning components, and optimizing the interaction between the physical car and projected environment.`
-
-## 16 Build Photos
-
-Add photos throughout the project.
-
-Suggested images:
-
-- early sketch,
-- prototype,
-- electronics testing,
-- mechanism test,
-- app screenshot,
-- final build.
-- <img width="960" height="1280" alt="WhatsApp Image 2026-04-24 at 9 46 02 AM (1)" src="https://github.com/user-attachments/assets/74baa570-5770-483e-be6d-d2f03386e37c" />
-
-
-
-
-
-# 17. Final Outcome
-
-## 17.1 Final Description
-
-Describe the final version of your project.
-
-**Response:**  
-
-
-## 17.2 What Works Well
-
-
-
-## 17.3 What Still Needs Improvement
-
-
-## 17.4 What Changed From the Original Plan
-
-How did the project change from the initial idea?
-
-**Response:**  
-
+**Revisions:** The original two-wheel drive design had a tipping problem on sharp turns — fixed by adding a rear caster wheel. The first ArUco marker (5cm) was too small for reliable detection at 1m camera height — reprinted at 8cm.
 
 ---
 
-# 18. Reflection
+## 16. Build Photos
 
-## 18.1 Team Reflection
-
-What did your team do well?  
-What slowed you down?  
-How well did you manage time, tasks, and responsibilities?
-
-**Response:**  
-
-
-## 18.2 Technical Reflection
-
-What did you learn about:
-
-- electronics,
-- coding,
-- mechanisms,
-- fabrication,
-- integration?
-
-**Response:**  
-
-
-## 18.3 Design Reflection
-
-What did you learn about:
-
-- designing ,
-- delight,
-- clarity,
-- physical interaction,
-- understanding,
-- iteration?
-
-**Response:**  
-
-
-## 18.4 If You Had One More hour
-
-What would you improve next?
-
-**Response:**  
-
-` `
+*[Upload the following and link here:]*
+- Early chassis sketch
+- Laser cut parts before assembly
+- Wiring — Pi to motor driver
+- ArUco marker mounted on car
+- Projector and camera setup overhead
+- First working drive test
+- Final assembled car
+- Full system running — car in projected battlefield
 
 ---
 
-# 19. Final Submission Checklist
+## 17. Final Outcome
 
-Before submission, confirm that:
+### 17.1 Final Description
+The final system is a two-wheeled RC car controlled via a phone web interface over WiFi. An overhead webcam tracks the car's position using an ArUco marker. A projector throws a top-down battlefield map onto the play surface. PyGame game logic runs on the Pi — detecting when the car hits obstacle zones (red flash) or reaches the target zone (green burst, next level loads). The experience is self-contained, portable, and playable by anyone in under 30 seconds with no instructions.
 
-- [x] Team details are complete
-- [x] Project description is complete
-- [x] Inspiration sources are included
-- [x] Sketches are added
-- [x] BOM is complete
-- [x] Purchase list is complete
-- [x] Budget summary is complete
-- [x] Mechanical planning is documented if applicable
-- [ ] App planning is documented if applicable
-- [x] Code flowchart is added
-- [x] Task breakdown is complete
-- [x] Weekly logs are updated
-- [x] Risk register is complete
-- [x] Testing log is updated
-- [x] Playtesting notes are included
-- [x] Build photos are included
-- [x] Final reflection is written
-<img width="1131" height="1600" alt="image" src="" />
+### 17.2 What Works Well
+- Phone controller is instant and responsive — no noticeable lag
+- ArUco tracking is stable and accurate under consistent lighting
+- Projector calibration step reliably aligns digital and physical spaces
+- Collision and goal detection feel snappy and satisfying
+- The physical car + projected world combination consistently surprises and delights first-time users
+
+### 17.3 What Still Needs Improvement
+- Lighting dependency — system needs the desk lamp; ambient room light alone is not enough
+- Projector must be mounted precisely — any movement breaks calibration
+- Phone controller UI is minimal — could benefit from visual feedback (speed indicator, lives)
+- Only two levels built — more maps needed for sustained play
+
+### 17.4 What Changed From the Original Plan
+The original idea used stepper motors and encoder-based position tracking (counting steps from a known origin). This was abandoned early when we realized camera-based ArUco tracking was far simpler, more accurate, and didn't require precise motor control. The pivot added the webcam to the BOM but removed the complexity of dead-reckoning navigation entirely. The PUBG battlefield framing was simplified — we focused on obstacle navigation rather than combat mechanics, which made the game logic much more achievable in the time available.
 
 ---
 
+## 18. Reflection
+
+### 18.1 Team Reflection
+**What we did well:** We pivoted fast when the stepper motor plan wasn't working. We stayed focused on getting a working demo rather than adding features. The hardware/software split between team members worked cleanly — very little blocking.
+
+**What slowed us down:** The projector calibration took far longer than expected — about 3 hours across two days of iteration. We underestimated how hard it is to reliably map two different cameras/projectors to the same coordinate system.
+
+**Time and task management:** Generally good. The 2-hour block check-ins kept us honest. We dropped two stretch features (moving obstacles, multiplayer) to protect demo quality — the right call.
+
+### 18.2 Technical Reflection
+**Electronics:** Learned that motor load can cause real voltage instability — the buck converter and capacitors weren't an afterthought, they were necessary.
+
+**Coding:** Threading in Python (motor control, camera feed, game loop all running simultaneously) was harder than expected. Queues between threads solved the stutter problem cleanly.
+
+**Mechanisms:** Caster wheel for balance — obvious in hindsight, not obvious at design time. Always prototype balance before finalizing chassis.
+
+**Fabrication:** Laser cut snap-fit tabs are excellent for rapid iteration but need tight tolerances — off by 0.2mm and parts don't fit.
+
+**Integration:** The hardest part of any project is always when two independently working subsystems meet. Camera coordinates → projector coordinates is a solved problem (perspective transform) but it still took real time to get right.
+
+### 18.3 Design Reflection
+**Designing:** Simplicity of interaction (drive car, avoid walls, reach target) made the system immediately understandable. No tutorial needed.
+
+**Delight:** The moment users first see the projected world respond to their physical car — that reaction is consistent and strong. Physical + digital interaction creates a specific kind of surprise that a screen alone doesn't.
+
+**Clarity:** Early playtesting showed the obstacle walls needed more visual contrast. Added red borders immediately — shows that testing with real users early, even informally, always finds things you missed.
+
+**Iteration:** The chassis went through two physical revisions and the software went through three major rewrites. That's normal. Build → test → learn → rebuild.
+
+### 18.4 If We Had One More Hour
+We would add a proper score and timer projected directly onto the surface — so the game state is fully visible without looking at a separate screen. It's the one thing that would make the experience feel complete and competitive.
 
 ---
 
+## 19. Final Submission Checklist
 
+- ✅ Team details are complete
+- ✅ Project description is complete
+- ✅ Inspiration sources are included
+- ⬜ Sketches are added *(upload images)*
+- ✅ BOM is complete
+- ✅ Purchase list is complete
+- ✅ Budget summary is complete
+- ✅ Mechanical planning is documented
+- ✅ App planning is documented
+- ✅ Code flowchart is added
+- ✅ Task breakdown is complete
+- ✅ Update logs are complete
+- ✅ Risk register is complete
+- ✅ Testing log is updated
+- ✅ Playtesting notes are included
+- ⬜ Build photos are included *(upload images)*
+- ✅ Final reflection is written
