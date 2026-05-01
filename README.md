@@ -453,14 +453,23 @@ Not applicable — this is a software-only project. No physical fabrication was 
 
 ## 16. Build Screenshots
 
-![edge_basic.py - 2x2 panel output](edge1.jpeg)
-![neuromorphic_dvs.py - 6 panel grid](edge2.jpeg)
-![Additional output](image1.jpeg)
+### MicroBlaze IP Block (Vivado Block Design)
+![MicroBlaze IP Block](microblaze_ip_block.jpeg)
 
-- edge_basic.py running — 2×2 panel (Original, Sobel, Canny, Laplacian)
-- neuromorphic_dvs.py running — 2×3 grid (all 6 panels)
-- Stats panel close-up — activity graph, event rate, adaptive indicator
-- Terminal showing FPS and threshold change output
+### Input — Cars Video Frame
+![Input Cars Image](input_cars.jpeg)
+
+### Output — Edge Detection on Cars
+![Output Cars Edge Detection](output_cars.jpeg)
+
+### edge_basic.py — 2×2 panel output
+![edge_basic output](edge1.jpeg)
+
+### neuromorphic_dvs.py — 6 panel grid
+![DVS 6 panel output](edge2.jpeg)
+
+### Additional Output
+![Additional output](image1.jpeg)
 
 ---
 
